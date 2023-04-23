@@ -1,8 +1,7 @@
-package com.beardness.macosmsapp.di.modules
+package com.beardness.macosmsapp.di.modules.usecase
 
 import com.beardness.macosmsapp.di.qualifiers.IoCoroutineScope
 import com.beardness.macosmsapp.source.repo.smscache.SmsCacheProxyRepoProtocol
-import com.beardness.macosmsapp.usecase.flow.internet.InternetFlow
 import com.beardness.macosmsapp.usecase.flow.internet.InternetFlowProtocol
 import com.beardness.macosmsapp.usecase.startup.StartUp
 import com.beardness.macosmsapp.usecase.startup.StartUpProtocol
@@ -15,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object StartupModule {
+object UseCaseStartupModule {
 
     @Provides
     @Singleton

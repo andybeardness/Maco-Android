@@ -1,9 +1,6 @@
 package com.beardness.macosmsapp.di.modules.usecase
 
 import android.content.Context
-import com.beardness.macosmsapp.source.repo.smscache.SmsCacheProxyRepoProtocol
-import com.beardness.macosmsapp.usecase.flow.smsgroup.SmsGroupFlow
-import com.beardness.macosmsapp.usecase.flow.smsgroup.SmsGroupFlowProtocol
 import com.beardness.macosmsapp.usecase.common.helpers.avatarcolorgenerator.AvatarColorGenerator
 import com.beardness.macosmsapp.usecase.common.helpers.avatarcolorgenerator.AvatarColorGeneratorProtocol
 import com.beardness.macosmsapp.usecase.common.helpers.datetime.DateTimeFormatter
@@ -17,20 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object SmsGroupFlowModule {
-
-    @Provides
-    @Singleton
-    fun provideSmsGroupFlow(
-        smsCacheRepo: SmsCacheProxyRepoProtocol,
-        dateTimeManager: DateTimeFormatterProtocol,
-        avatarColorGenerator: AvatarColorGeneratorProtocol,
-    ): SmsGroupFlowProtocol =
-        SmsGroupFlow(
-            smsCacheRepo = smsCacheRepo,
-            dateTimeManager = dateTimeManager,
-            avatarColorGenerator = avatarColorGenerator,
-        )
+object UseCaseCommonModule {
 
     @Provides
     @Singleton
@@ -46,4 +30,5 @@ object SmsGroupFlowModule {
     fun provideAvatarColorGenerator(
     ): AvatarColorGeneratorProtocol =
         AvatarColorGenerator()
+
 }

@@ -3,12 +3,10 @@ package com.beardness.macosmsapp.screen.smsbygroup
 import androidx.lifecycle.ViewModel
 import com.beardness.macosmsapp.di.qualifiers.IoCoroutineScope
 import com.beardness.macosmsapp.screen.smsbygroup.dto.GroupSmsViewDto
-import com.beardness.macosmsapp.usecase.flow.internet.InternetFlow
 import com.beardness.macosmsapp.usecase.flow.internet.InternetFlowProtocol
 import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
 import com.beardness.macosmsapp.usecase.flow.smsgroup.SmsGroupFlowProtocol
-import com.beardness.macosmsapp.usecase.usecase.updatesmsflow.UpdateSmsFlowUseCase
-import com.beardness.macosmsapp.usecase.usecase.updatesmsflow.UpdateSmsFlowUseCaseProtocol
+import com.beardness.macosmsapp.usecase.usecase.updatesmsflow.UpdateSmsUseCaseProtocol
 import com.beardness.macosmsapp.utils.SpecificChars
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -21,7 +19,7 @@ import javax.inject.Inject
 class SmsByGroupScreenViewModel @Inject constructor(
     private val smsGroupFlow: SmsGroupFlowProtocol,
     private val internetFlow: InternetFlowProtocol,
-    private val updateSmsFlowUseCase: UpdateSmsFlowUseCaseProtocol,
+    private val updateSmsFlowUseCase: UpdateSmsUseCaseProtocol,
     @IoCoroutineScope private val ioCoroutineScope: CoroutineScope,
 ) : ViewModel(), SmsByGroupScreenViewModelProtocol {
 

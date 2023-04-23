@@ -41,17 +41,6 @@ object TranslateSmsUseCaseModule {
 
     @Provides
     @Singleton
-    fun provideSmsTranslateFlow(
-        smsCacheProxyRepo: SmsCacheProxyRepoProtocol,
-        translateRepo: TranslateRepoProtocol,
-    ): SmsTranslatesFlowProtocol =
-        SmsTranslatesFlow(
-            smsCacheProxyRepo = smsCacheProxyRepo,
-            translateRepo = translateRepo,
-        )
-
-    @Provides
-    @Singleton
     @QAutoTranslator
     fun provideAutoTranslator(
         googleTranslateApiService: GoogleTranslateApiService,

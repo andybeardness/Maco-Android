@@ -1,8 +1,8 @@
-package com.beardness.macosmsapp.di.modules.usecase.updatesmsflow
+package com.beardness.macosmsapp.di.modules.usecase.updatesms
 
 import com.beardness.macosmsapp.source.repo.smscache.SmsCacheProxyRepoProtocol
-import com.beardness.macosmsapp.usecase.usecase.updatesmsflow.UpdateSmsFlowUseCase
-import com.beardness.macosmsapp.usecase.usecase.updatesmsflow.UpdateSmsFlowUseCaseProtocol
+import com.beardness.macosmsapp.usecase.usecase.updatesmsflow.UpdateSmsUseCase
+import com.beardness.macosmsapp.usecase.usecase.updatesmsflow.UpdateSmsUseCaseProtocol
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,14 +11,14 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object UpdateSmsFlowUseCaseModule {
+object UpdateSmsUseCaseModule {
 
     @Provides
     @Singleton
-    fun provideUpdateSmsFlowUseCase(
+    fun provideUpdateSmsUseCase(
         smsCacheProxyRepo: SmsCacheProxyRepoProtocol
-    ): UpdateSmsFlowUseCaseProtocol =
-        UpdateSmsFlowUseCase(
+    ): UpdateSmsUseCaseProtocol =
+        UpdateSmsUseCase(
             smsCacheProxyRepo = smsCacheProxyRepo,
         )
 }

@@ -1,5 +1,5 @@
 package com.beardness.macosmsapp.usecase.usecase.updatesmsflow
 
-interface UpdateSmsFlowUseCaseProtocol {
+interface UpdateSmsUseCaseProtocol {
     suspend fun update()
 }
