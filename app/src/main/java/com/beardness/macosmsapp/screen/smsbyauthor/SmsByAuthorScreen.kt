@@ -11,7 +11,6 @@ import com.beardness.macosmsapp.ui.widget.smstranslateslist.SmsTranslatesWidget
 import com.beardness.macosmsapp.ui.widget.toolbar.smsbyauthor.ToolbarSmsByAuthorWidget
 import com.beardness.macosmsapp.usecase.common.types.LanguageCode
 import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
-import com.beardness.macosmsapp.utils.SpecificChars
 
 @Composable
 fun SmsByAuthorScreen(
@@ -23,19 +22,7 @@ fun SmsByAuthorScreen(
     val internetStatus by viewModel.internetConnectionFlow.collectAsState(initial = InternetStatus.Lost)
     val smsProcessing by viewModel.smsProcessingCollectionFlow.collectAsState(initial = emptySet())
 
-    val onClickGe: (smsId: Int) -> Unit =
-        when (internetStatus) {
-            InternetStatus.Available -> { smsId ->
-                viewModel.translate(
-                    smsId = smsId,
-                    languageCode = LanguageCode.GE,
-                )
-            }
-
-            InternetStatus.Lost -> { _ -> }
-        }
-
-    val onClickAuto: (smsId: Int) -> Unit =
+    val onClickTranslate: (smsId: Int) -> Unit =
         when (internetStatus) {
             InternetStatus.Available -> { smsId ->
                 viewModel.translate(
@@ -46,8 +33,6 @@ fun SmsByAuthorScreen(
 
             InternetStatus.Lost -> { _ -> }
         }
-
-    val isButtonsAvailable = internetStatus == InternetStatus.Available
 
     Column(
         modifier = Modifier
@@ -60,9 +45,7 @@ fun SmsByAuthorScreen(
 
         SmsTranslatesWidget(
             smsCollection = sms,
-            onClickGe = onClickGe,
-            onClickAuto = onClickAuto,
-            isButtonsAvailable = isButtonsAvailable,
+            onClickAuto = onClickTranslate,
             smsProcessing = smsProcessing,
         )
     }

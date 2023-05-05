@@ -5,16 +5,13 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsViewDto
 import com.beardness.macosmsapp.ui.component.sms.translate.SmsTranslateComponent
 
 @Composable
 fun SmsTranslatesWidget(
     smsCollection: List<SmsViewDto>,
-    onClickGe: (smsId: Int) -> Unit,
     onClickAuto: (smsId: Int) -> Unit,
-    isButtonsAvailable: Boolean,
     smsProcessing: Set<Int>,
 ) {
     LazyColumn(
@@ -26,9 +23,7 @@ fun SmsTranslatesWidget(
 
             SmsTranslateComponent(
                 sms = smsViewDto,
-                onClickGe = { onClickGe(smsViewDto.id) },
-                onClickAuto = { onClickAuto(smsViewDto.id) },
-                isButtonsAvailable = isButtonsAvailable,
+                onClickTranslate = { onClickAuto(smsViewDto.id) },
                 isSmsProcessing = isSmsProcessing,
             )
         }
