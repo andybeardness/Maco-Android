@@ -1,10 +1,10 @@
-package com.beardness.macosmsapp.usecase.usecase.translatesms.translator.auto
+package com.beardness.macosmsapp.usecase.common.translator.auto
 
 import com.beardness.macosmsapp.BuildConfig
 import com.beardness.macosmsapp.source.api.googletranslate.GoogleTranslateApiService
 import com.beardness.macosmsapp.source.api.googletranslate.RequestDto
 import com.beardness.macosmsapp.source.api.googletranslate.translatedBody
-import com.beardness.macosmsapp.usecase.usecase.translatesms.translator.BaseTranslatorProtocol
+import com.beardness.macosmsapp.usecase.common.translator.BaseTranslatorProtocol
 import javax.inject.Inject
 
 class AutoTranslator @Inject constructor(

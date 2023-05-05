@@ -11,9 +11,9 @@ import com.beardness.macosmsapp.usecase.usecase.translatesms.TranslateSmsUseCase
 import com.beardness.macosmsapp.usecase.usecase.translatesms.TranslateSmsUseCaseProtocol
 import com.beardness.macosmsapp.usecase.flow.smstranslates.SmsTranslatesFlow
 import com.beardness.macosmsapp.usecase.flow.smstranslates.SmsTranslatesFlowProtocol
-import com.beardness.macosmsapp.usecase.usecase.translatesms.translator.BaseTranslatorProtocol
-import com.beardness.macosmsapp.usecase.usecase.translatesms.translator.auto.AutoTranslator
-import com.beardness.macosmsapp.usecase.usecase.translatesms.translator.ge.GeTranslator
+import com.beardness.macosmsapp.usecase.common.translator.BaseTranslatorProtocol
+import com.beardness.macosmsapp.usecase.common.translator.auto.AutoTranslator
+import com.beardness.macosmsapp.usecase.common.translator.ge.GeTranslator
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

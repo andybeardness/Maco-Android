@@ -1,46 +1,71 @@
 package com.beardness.macosmsapp.screen.smsbygroup
 
 import android.Manifest
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.Icon
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Assignment
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.beardness.macosmsapp.screen.common.PermissionScreen
 import com.beardness.macosmsapp.screen.common.SmsPermissionScreen
+import com.beardness.macosmsapp.ui.theme.dimen.Dimen
 import com.beardness.macosmsapp.ui.widget.smsbygrouplist.SmsByGroupListWidget
 import com.beardness.macosmsapp.ui.widget.toolbar.smsbygroup.ToolbarSmsByGroupWidget
-import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
-import com.beardness.macosmsapp.utils.SpecificChars
 
 @Composable
-fun SmsByGroup(viewModel: SmsByGroupScreenViewModelProtocol) {
-
+fun SmsByGroup(
+    viewModel: SmsByGroupScreenViewModelProtocol,
+    navigateToBodyTranslate: () -> Unit,
+    navigateToSmsByAuthor: (author: String) -> Unit,
+) {
     val sms by viewModel.sms.collectAsState(initial = emptyList())
 
     val toolbarTitle by viewModel.toolbarTitle.collectAsState(initial = "")
 
-    val navigateToAuthor: (author: String) -> Unit = { author ->
-        viewModel.navigateToSmsByAuthorScreen(author)
-    }
-
     PermissionScreen(
         permission = Manifest.permission.READ_SMS,
         granted = {
-            Column(
+            Box(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                ToolbarSmsByGroupWidget(
-                    title = toolbarTitle,
-                    onClickRefresh = { viewModel.refreshSmsList() }
-                )
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    ToolbarSmsByGroupWidget(
+                        title = toolbarTitle,
+                        onClickRefresh = { viewModel.refreshSmsList() }
+                    )
 
-                SmsByGroupListWidget(
-                    sms = sms,
-                    onClickAuthor = navigateToAuthor
-                )
+                    SmsByGroupListWidget(
+                        sms = sms,
+                        onClickAuthor = navigateToSmsByAuthor
+                    )
+                }
+
+                FloatingActionButton(
+                    modifier = Modifier
+                        .align(alignment = Alignment.BottomEnd)
+                        .padding(all = Dimen.dp32),
+                    onClick = navigateToBodyTranslate,
+                    backgroundColor = MaterialTheme.colorScheme.primary
+                ) {
+                    Icon(
+                        imageVector = Icons.Rounded.Assignment ,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onPrimary,
+                    )
+                }
             }
         },
         denied = { request ->

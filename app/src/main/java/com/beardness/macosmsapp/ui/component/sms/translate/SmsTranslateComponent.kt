@@ -112,13 +112,13 @@ private fun ContentBlock(
             fontWeight = FontWeight.Light,
         )
 
-        Translation(
+        TranslationComponent(
             visibility = isTranslationAutoExist,
             title = "Translation ${SpecificChars.EMOJI_EARTH}",
             text = translationAuto
         )
 
-        Translation(
+        TranslationComponent(
             visibility = isTranslationGeExist,
             title = "Georgia ${SpecificChars.EMOJI_GEORGIA}",
             text = translationGe
@@ -150,35 +150,6 @@ private fun TranslateButton(
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Light,
                 color = MaterialTheme.colorScheme.onBackground,
-            )
-        }
-    }
-}
-
-@Composable
-private fun Translation(
-    visibility: Boolean,
-    title: String,
-    text: String,
-) {
-    AnimatedVisibility(visible = visibility) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = Dimen.dp8)
-        ) {
-            Text(
-                text = title,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.Light,
-                color = MaterialTheme.colorScheme.onBackground,
-            )
-
-            Text(
-                text = text,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Light,
-                color = MaterialTheme.colorScheme.primary,
             )
         }
     }

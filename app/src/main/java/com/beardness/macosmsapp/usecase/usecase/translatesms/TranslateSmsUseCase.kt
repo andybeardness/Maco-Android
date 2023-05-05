@@ -5,7 +5,7 @@ import com.beardness.macosmsapp.di.qualifiers.QGeTranslator
 import com.beardness.macosmsapp.source.repo.smscache.SmsCacheProxyRepoProtocol
 import com.beardness.macosmsapp.source.repo.translate.TranslateRepoProtocol
 import com.beardness.macosmsapp.source.repo.translate.dto.TranslateRepoDto
-import com.beardness.macosmsapp.usecase.usecase.translatesms.translator.BaseTranslatorProtocol
+import com.beardness.macosmsapp.usecase.common.translator.BaseTranslatorProtocol
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map

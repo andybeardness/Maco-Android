@@ -8,6 +8,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.beardness.macosmsapp.screen.bodytranslate.BodyTranslateScreen
+import com.beardness.macosmsapp.screen.bodytranslate.BodyTranslateViewModel
+import com.beardness.macosmsapp.screen.bodytranslate.BodyTranslateViewModelProtocol
 import com.beardness.macosmsapp.screen.smsbyauthor.SmsByAuthorScreen
 import com.beardness.macosmsapp.screen.smsbyauthor.SmsByAuthorScreenViewModel
 import com.beardness.macosmsapp.screen.smsbygroup.SmsByGroup
@@ -18,6 +21,12 @@ import com.beardness.macosmsapp.screen.smsbygroup.SmsByGroupScreenViewModel
 fun AppNavigation() {
 
     val navController = rememberNavController()
+
+    val navigateToBodyTranslate: () -> Unit = {
+        navController.navigate(
+            route = Route.BodyTranslated.route,
+        )
+    }
 
     val navigateToSmsByAuthor: (author: String) -> Unit = { author ->
         navController.navigate(
@@ -34,9 +43,12 @@ fun AppNavigation() {
 
         composable(route = Route.SmsGroups.route) {
             val viewModel = hiltViewModel<SmsByGroupScreenViewModel>()
-            viewModel.setup(navigateToSmsByAuthor = navigateToSmsByAuthor)
 
-            SmsByGroup(viewModel = viewModel)
+            SmsByGroup(
+                viewModel = viewModel,
+                navigateToBodyTranslate = navigateToBodyTranslate,
+                navigateToSmsByAuthor = navigateToSmsByAuthor,
+            )
         }
 
         composable(
@@ -48,6 +60,14 @@ fun AppNavigation() {
             viewModel.setup(author = author)
 
             SmsByAuthorScreen(viewModel = viewModel)
+        }
+
+        composable(route = Route.BodyTranslated.route) {
+            val viewModel = hiltViewModel<BodyTranslateViewModel>()
+
+            BodyTranslateScreen(
+                viewModel = viewModel,
+            )
         }
     }
 }

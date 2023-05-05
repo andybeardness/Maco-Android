@@ -51,16 +51,6 @@ class SmsByGroupScreenViewModel @Inject constructor(
                 }
             }
 
-    override fun setup(
-        navigateToSmsByAuthor: (author: String) -> Unit
-    ) {
-        this.navigateToSmsByAuthor = navigateToSmsByAuthor
-    }
-
-    override fun navigateToSmsByAuthorScreen(author: String) {
-        this.navigateToSmsByAuthor(author)
-    }
-
     override fun refreshSmsList() {
         ioCoroutineScope.launch {
             updateSmsFlowUseCase.update()

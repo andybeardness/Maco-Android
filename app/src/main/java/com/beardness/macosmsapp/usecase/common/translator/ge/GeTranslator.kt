@@ -1,6 +1,6 @@
-package com.beardness.macosmsapp.usecase.usecase.translatesms.translator.ge
+package com.beardness.macosmsapp.usecase.common.translator.ge
 
-import com.beardness.macosmsapp.usecase.usecase.translatesms.translator.BaseTranslatorProtocol
+import com.beardness.macosmsapp.usecase.common.translator.BaseTranslatorProtocol
 import javax.inject.Inject
 
 class GeTranslator @Inject constructor(
