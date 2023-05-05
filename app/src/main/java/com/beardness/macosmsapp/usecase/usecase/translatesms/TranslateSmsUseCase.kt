@@ -5,7 +5,6 @@ import com.beardness.macosmsapp.di.qualifiers.QGeTranslator
 import com.beardness.macosmsapp.source.repo.smscache.SmsCacheProxyRepoProtocol
 import com.beardness.macosmsapp.source.repo.translate.TranslateRepoProtocol
 import com.beardness.macosmsapp.source.repo.translate.dto.TranslateRepoDto
-import com.beardness.macosmsapp.usecase.common.types.LanguageCode
 import com.beardness.macosmsapp.usecase.usecase.translatesms.translator.BaseTranslatorProtocol
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
@@ -18,13 +17,15 @@ class TranslateSmsUseCase @Inject constructor(
     @QGeTranslator private val geTranslator: BaseTranslatorProtocol,
 ) : TranslateSmsUseCaseProtocol {
 
-    override suspend fun translate(smsId: Int, languageCode: LanguageCode) {
+    override suspend fun translate(smsId: Int) {
         val sms =
             smsCacheProxyRepo
                 .flow
                 .map { collection ->
                     collection
-                        .firstOrNull { smsCacheProxyRepoDto -> smsCacheProxyRepoDto.smsId == smsId }
+                        .firstOrNull { smsCacheProxyRepoDto ->
+                            smsCacheProxyRepoDto.smsId == smsId
+                        }
                 }
                 .firstOrNull()
                 ?: return
@@ -34,25 +35,19 @@ class TranslateSmsUseCase @Inject constructor(
         )
 
         existed.forEach { translateRepoDto ->
-            if (translateRepoDto.languageCode == languageCode.sign) {
+            if (translateRepoDto.smsId == smsId) {
                 return
             }
         }
 
-        val translator = when (languageCode) {
-            LanguageCode.GE -> geTranslator
-            LanguageCode.AUTO -> autoTranslator
-        }
-
-        val translated = translator.translate(
-            text = sms.body
-        ) ?: return
+        val translatedAuto = autoTranslator.translate(text = sms.body) ?: ""
+        val translatedGe = geTranslator.translate(text = sms.body) ?: "" // TODO
 
         val translateRepoDto = TranslateRepoDto(
             id = 0,
             smsId = smsId,
-            languageCode = languageCode.sign,
-            translatedBody = translated,
+            translatedAuto = translatedAuto,
+            translatedGe = translatedGe,
         )
 
         translateRepo.save(

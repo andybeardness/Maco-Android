@@ -32,8 +32,8 @@ class TranslateRepo @Inject constructor(
             TranslateRepoDto(
                 id = dbEntity.id.toInt(),
                 smsId = dbEntity.smsId.toInt(),
-                languageCode = dbEntity.langCode,
-                translatedBody = dbEntity.translatedBody,
+                translatedAuto = dbEntity.translatedAuto,
+                translatedGe = dbEntity.translatedGe,
             )
         }
 }

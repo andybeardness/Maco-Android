@@ -94,8 +94,15 @@ private fun ContentBlock(
     translates: SmsTranslateViewDto,
     onClickTranslate: () -> Unit,
 ) {
-    val translate = translates.auto ?: ""
-    val isTranslateExist = translate.isNotEmpty()
+    val isTranslationAutoExist = translates.auto != null
+    val isTranslationGeExist = translates.georgian != null
+
+    val translationAuto = translates.auto ?: ""
+    val translationGe = translates.georgian ?: ""
+
+    val isTranslationButtonVisible =
+        !isTranslationAutoExist &&
+                !isTranslationGeExist
 
     Column {
         Text(
@@ -106,12 +113,19 @@ private fun ContentBlock(
         )
 
         Translation(
-            visibility = isTranslateExist,
-            text = translate
+            visibility = isTranslationAutoExist,
+            title = "Translation ${SpecificChars.EMOJI_EARTH}",
+            text = translationAuto
+        )
+
+        Translation(
+            visibility = isTranslationGeExist,
+            title = "Georgia ${SpecificChars.EMOJI_GEORGIA}",
+            text = translationGe
         )
 
         TranslateButton(
-            visibility = !isTranslateExist,
+            visibility = isTranslationButtonVisible,
             onClick = onClickTranslate
         )
     }
@@ -144,6 +158,7 @@ private fun TranslateButton(
 @Composable
 private fun Translation(
     visibility: Boolean,
+    title: String,
     text: String,
 ) {
     AnimatedVisibility(visible = visibility) {
@@ -153,7 +168,7 @@ private fun Translation(
                 .padding(vertical = Dimen.dp8)
         ) {
             Text(
-                text = "Translation ${SpecificChars.EMOJI_EARTH}",
+                text = title,
                 fontSize = 12.sp,
                 fontWeight = FontWeight.Light,
                 color = MaterialTheme.colorScheme.onBackground,

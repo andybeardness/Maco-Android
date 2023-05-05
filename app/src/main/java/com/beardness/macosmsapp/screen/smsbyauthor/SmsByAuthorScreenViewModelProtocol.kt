@@ -2,10 +2,8 @@ package com.beardness.macosmsapp.screen.smsbyauthor
 
 import androidx.compose.ui.graphics.Color
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsViewDto
-import com.beardness.macosmsapp.usecase.common.types.LanguageCode
 import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 interface SmsByAuthorScreenViewModelProtocol {
@@ -17,5 +15,5 @@ interface SmsByAuthorScreenViewModelProtocol {
 
     fun setup(author: String)
 
-    fun translate(smsId: Int, languageCode: LanguageCode)
+    fun translate(smsId: Int)
 }

@@ -1,24 +1,19 @@
 package com.beardness.macosmsapp.screen.smsbyauthor
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.beardness.macosmsapp.di.qualifiers.IoCoroutineScope
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsTranslateViewDto
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsViewDto
 import com.beardness.macosmsapp.usecase.common.helpers.avatarcolorgenerator.AvatarColorGeneratorProtocol
 import com.beardness.macosmsapp.usecase.common.helpers.datetime.DateTimeFormatterProtocol
-import com.beardness.macosmsapp.usecase.common.types.LanguageCode
-import com.beardness.macosmsapp.usecase.flow.internet.InternetFlow
 import com.beardness.macosmsapp.usecase.flow.internet.InternetFlowProtocol
 import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
-import com.beardness.macosmsapp.usecase.flow.smsprocessing.SmsProcessingFlow
 import com.beardness.macosmsapp.usecase.flow.smsprocessing.SmsProcessingFlowProtocol
-import com.beardness.macosmsapp.usecase.usecase.translatesms.TranslateSmsUseCaseProtocol
 import com.beardness.macosmsapp.usecase.flow.smstranslates.SmsTranslatesFlowProtocol
 import com.beardness.macosmsapp.usecase.flow.smstranslates.dto.SmsTranslateDto
+import com.beardness.macosmsapp.usecase.usecase.translatesms.TranslateSmsUseCaseProtocol
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,8 +21,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SmsByAuthorScreenViewModel @Inject constructor(
     private val translateSmsUseCase: TranslateSmsUseCaseProtocol,
-    private val smsTranslatesFlow: SmsTranslatesFlowProtocol,
-    private val internetFlow: InternetFlowProtocol,
+    smsTranslatesFlow: SmsTranslatesFlowProtocol,
+    internetFlow: InternetFlowProtocol,
     private val smsProcessingFlow: SmsProcessingFlowProtocol,
     private val avatarColorGenerator: AvatarColorGeneratorProtocol,
     private val dateTimeManager: DateTimeFormatterProtocol,
@@ -52,9 +47,9 @@ class SmsByAuthorScreenViewModel @Inject constructor(
         ) { sms,
             author ->
 
-            sms.filter { smsRepoDto -> smsRepoDto.author == author}
-                .sortedByDescending { smsRepoDto -> smsRepoDto.date }
-                .map { smsRepoDto -> smsRepoDto.viewDto() }
+            sms.filter { smsTranslateDto -> smsTranslateDto.author == author}
+                .sortedByDescending { smsTranslateDto -> smsTranslateDto.date }
+                .map { smsTranslateDto -> smsTranslateDto.viewDto() }
       }
 
     override val internetConnectionFlow: Flow<InternetStatus> =
@@ -73,14 +68,12 @@ class SmsByAuthorScreenViewModel @Inject constructor(
 
     override fun translate(
         smsId: Int,
-        languageCode: LanguageCode,
     ) {
         ioCoroutineScope.launch {
             smsProcessingFlow.push(smsId = smsId)
 
             translateSmsUseCase.translate(
                 smsId = smsId,
-                languageCode = languageCode,
             )
 
             smsProcessingFlow.pop(smsId = smsId)

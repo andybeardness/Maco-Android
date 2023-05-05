@@ -15,17 +15,17 @@ data class TranslateDbEntity(
     @ColumnInfo(name = "sms_id")
     val smsId: Long,
 
-    @ColumnInfo(name = "lang_code")
-    val langCode: String,
+    @ColumnInfo(name = "translated_auto")
+    val translatedAuto: String,
 
-    @ColumnInfo(name = "translated_body")
-    val translatedBody: String,
+    @ColumnInfo(name = "translated_ge")
+    val translatedGe: String,
 )
 
 fun TranslateRepoDto.dbEntity(): TranslateDbEntity =
     TranslateDbEntity(
         id = this.id.toLong(),
         smsId = this.smsId.toLong(),
-        langCode = this.languageCode,
-        translatedBody = this.translatedBody,
+        translatedAuto = this.translatedAuto,
+        translatedGe = this.translatedGe,
     )

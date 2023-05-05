@@ -9,7 +9,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.beardness.macosmsapp.ui.widget.smstranslateslist.SmsTranslatesWidget
 import com.beardness.macosmsapp.ui.widget.toolbar.smsbyauthor.ToolbarSmsByAuthorWidget
-import com.beardness.macosmsapp.usecase.common.types.LanguageCode
 import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
 
 @Composable
@@ -27,7 +26,6 @@ fun SmsByAuthorScreen(
             InternetStatus.Available -> { smsId ->
                 viewModel.translate(
                     smsId = smsId,
-                    languageCode = LanguageCode.AUTO,
                 )
             }
 
