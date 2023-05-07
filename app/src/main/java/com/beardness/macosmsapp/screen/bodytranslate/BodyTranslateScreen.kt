@@ -7,6 +7,7 @@ import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -121,10 +122,7 @@ fun BodyTranslateScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .weight(weight = 1f)
-                .scrollable(
-                    state = rememberScrollState(),
-                    orientation = Orientation.Vertical,
-                )
+                .verticalScroll(state = rememberScrollState())
                 .padding(
                     horizontal = Dimen.dp16,
                     vertical = Dimen.dp8,
