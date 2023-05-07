@@ -11,12 +11,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.beardness.macosmsapp.R
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsTranslateViewDto
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsViewDto
 import com.beardness.macosmsapp.ui.theme.dimen.Dimen
-import com.beardness.macosmsapp.utils.SpecificChars
 
 @Composable
 fun SmsTranslateComponent(
@@ -98,6 +99,9 @@ private fun ContentBlock(
     onClickTranslate: () -> Unit,
     onClickTranslatedText: (text: String) -> Unit,
 ) {
+    val translationAutoText = stringResource(id = R.string.translation_auto)
+    val translationGeText = stringResource(id = R.string.translation_ge)
+
     val isTranslationAutoExist = translates.auto != null
     val isTranslationGeExist = translates.georgian != null
 
@@ -120,7 +124,7 @@ private fun ContentBlock(
 
         TranslationComponent(
             visibility = isTranslationAutoExist,
-            title = "Translation ${SpecificChars.EMOJI_EARTH}",
+            title = translationAutoText,
             text = translationAuto,
             onClick = { onClickTranslatedText(translationAuto) },
         )
@@ -129,7 +133,7 @@ private fun ContentBlock(
 
         TranslationComponent(
             visibility = isTranslationGeExist,
-            title = "Georgia ${SpecificChars.EMOJI_GEORGIA}",
+            title = translationGeText,
             text = translationGe,
             onClick = { onClickTranslatedText(translationGe) },
         )
@@ -148,6 +152,8 @@ private fun TranslateButton(
     visibility: Boolean,
     onClick: () -> Unit,
 ) {
+    val translateText = stringResource(id = R.string.translate)
+
     AnimatedVisibility(
         visible = visibility,
         enter = slideInVertically(
@@ -180,7 +186,7 @@ private fun TranslateButton(
             contentAlignment = Alignment.Center,
         ) {
             Text(
-                text = "Translate ${SpecificChars.EMOJI_EARTH} ${SpecificChars.EMOJI_GEORGIA}",
+                text = translateText,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Light,
                 color = MaterialTheme.colorScheme.onBackground,

@@ -23,8 +23,6 @@ class SmsByGroupScreenViewModel @Inject constructor(
     @IoCoroutineScope private val ioCoroutineScope: CoroutineScope,
 ) : ViewModel(), SmsByGroupScreenViewModelProtocol {
 
-    private var navigateToSmsByAuthor: (author: String) -> Unit = {}
-
     override val sms =
         smsGroupFlow
             .smsGroups
@@ -41,15 +39,14 @@ class SmsByGroupScreenViewModel @Inject constructor(
                     }
             }
 
-    override val toolbarTitle: Flow<String> =
-        internetFlow
-            .flow
-            .map { status ->
-                when (status) {
-                    InternetStatus.Available -> "${SpecificChars.EMOJI_GEORGIA} Maco SMS"
-                    InternetStatus.Lost -> "${SpecificChars.EMOJI_ERROR} No connection"
-                }
+    override val internet: Flow<Boolean> =
+        internetFlow.flow.map { status ->
+            when (status) {
+                InternetStatus.Available -> true
+                InternetStatus.Lost -> false
             }
+        }
+
 
     override fun refreshSmsList() {
         ioCoroutineScope.launch {

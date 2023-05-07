@@ -14,17 +14,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.beardness.macosmsapp.R
 import com.beardness.macosmsapp.ui.component.sms.translate.TranslationComponent
 import com.beardness.macosmsapp.ui.theme.dimen.Dimen
-import com.beardness.macosmsapp.utils.SpecificChars
 
 @Composable
 fun BodyTranslateScreen(
     viewModel: BodyTranslateViewModelProtocol,
     initialInput: String = "",
 ) {
+    val inputHereText = stringResource(id = R.string.input_text)
+    val translateText = stringResource(id = R.string.translate)
+    val translationAutoText = stringResource(id = R.string.translation_auto)
+    val translationGeText = stringResource(id = R.string.translation_ge)
+
     val focusManager = LocalFocusManager.current
 
     var input by remember { mutableStateOf(initialInput) }
@@ -66,7 +72,7 @@ fun BodyTranslateScreen(
             enabled = internet,
             placeholder = {
                 Text(
-                    text = "Input text here",
+                    text = inputHereText,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Light,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = .3f),
@@ -95,7 +101,7 @@ fun BodyTranslateScreen(
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
-                        text = "Translate ${SpecificChars.EMOJI_EARTH} ${SpecificChars.EMOJI_GEORGIA}",
+                        text = translateText,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Light,
                         color = MaterialTheme.colorScheme.onBackground,
@@ -126,7 +132,7 @@ fun BodyTranslateScreen(
         ) {
             TranslationComponent(
                 visibility = translatedAuto.isNotEmpty(),
-                title = "Translation ${SpecificChars.EMOJI_EARTH}",
+                title = translationAutoText,
                 text = translatedAuto,
                 onClick = { onClickTranslatedText(translatedAuto) },
             )
@@ -135,7 +141,7 @@ fun BodyTranslateScreen(
 
             TranslationComponent(
                 visibility = translatedGe.isNotEmpty(),
-                title = "Georgia ${SpecificChars.EMOJI_GEORGIA}",
+                title = translationGeText,
                 text = translatedGe,
                 onClick = { onClickTranslatedText(translatedGe) },
             )

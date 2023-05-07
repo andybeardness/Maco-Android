@@ -15,6 +15,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.beardness.macosmsapp.R
 import com.beardness.macosmsapp.screen.common.PermissionScreen
 import com.beardness.macosmsapp.screen.common.SmsPermissionScreen
 import com.beardness.macosmsapp.ui.theme.dimen.Dimen
@@ -27,9 +29,18 @@ fun SmsByGroup(
     navigateToBodyTranslate: () -> Unit,
     navigateToSmsByAuthor: (author: String) -> Unit,
 ) {
-    val sms by viewModel.sms.collectAsState(initial = emptyList())
+    val mainToolbarText = stringResource(id = R.string.main_toolbar_text)
+    val noInternetToolbarText = stringResource(id = R.string.main_toolbar_text_no_connection)
 
-    val toolbarTitle by viewModel.toolbarTitle.collectAsState(initial = "")
+    val sms by viewModel.sms.collectAsState(initial = emptyList())
+    val internet by viewModel.internet.collectAsState(initial = true)
+
+    val toolbarTitle =
+        if (internet) {
+            mainToolbarText
+        } else {
+            noInternetToolbarText
+        }
 
     PermissionScreen(
         permission = Manifest.permission.READ_SMS,

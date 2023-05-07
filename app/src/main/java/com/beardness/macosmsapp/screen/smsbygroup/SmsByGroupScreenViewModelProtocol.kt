@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface SmsByGroupScreenViewModelProtocol {
     val sms: Flow<List<GroupSmsViewDto>>
-    val toolbarTitle: Flow<String>
+    val internet: Flow<Boolean>
     fun refreshSmsList()
 }
