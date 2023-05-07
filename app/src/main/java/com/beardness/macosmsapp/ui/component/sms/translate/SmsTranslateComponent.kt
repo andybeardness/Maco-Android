@@ -154,17 +154,17 @@ private fun TranslateButton(
             animationSpec = tween(
                 durationMillis = 350,
             ),
-            initialOffsetY = { size -> - size / 2}
+            initialOffsetY = { size -> - size / 10 }
         ) + fadeIn(
             animationSpec = tween(
                 durationMillis = 350,
             ),
         ),
-        exit = slideOutVertically(
+        exit = slideOutHorizontally(
             animationSpec = tween(
                 durationMillis = 350,
             ),
-            targetOffsetY = { size -> size / 2 }
+            targetOffsetX = { size -> size / 10 }
         ) + fadeOut(
             animationSpec = tween(
                 durationMillis = 350,

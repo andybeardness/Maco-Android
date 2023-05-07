@@ -40,7 +40,7 @@ fun SmsPermissionScreen(
             Box(
                 modifier = Modifier
                     .clip(shape = Shape.circle)
-                    .background(color = MaterialTheme.colorScheme.primaryContainer)
+                    .background(color = MaterialTheme.colorScheme.primary)
                     .padding(
                         horizontal = Dimen.dp32,
                         vertical = Dimen.dp16,
@@ -50,7 +50,7 @@ fun SmsPermissionScreen(
             ) {
                 Text(
                     text = "REQUEST",
-                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    color = MaterialTheme.colorScheme.onPrimary,
                 )
             }
         }

@@ -28,14 +28,15 @@ fun TranslationComponent(
         visible = visibility,
         enter = slideInVertically(
             animationSpec = tween(
-                durationMillis = 350,
-                delayMillis = 350,
+                durationMillis = 400,
+                delayMillis = 0,
             ),
             initialOffsetY = { size -> - size / 10 },
         ) + fadeIn(
             animationSpec = tween(
                 durationMillis = 350,
-                delayMillis = 350),
+                delayMillis = 350,
+            ),
         ),
     ) {
         Column(
