@@ -11,4 +11,5 @@ interface BodyTranslateViewModelProtocol {
 
     fun updateEntered(text: String)
     fun translate(text: String)
+    fun copyToClipboard(text: String)
 }

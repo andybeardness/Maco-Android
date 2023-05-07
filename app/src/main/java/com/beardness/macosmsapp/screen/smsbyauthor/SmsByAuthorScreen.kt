@@ -32,6 +32,10 @@ fun SmsByAuthorScreen(
             InternetStatus.Lost -> { _ -> }
         }
 
+    val onClickTranslatedText: (text: String) -> Unit = { text ->
+        viewModel.copyToClipboard(text = text)
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -45,6 +49,7 @@ fun SmsByAuthorScreen(
             smsCollection = sms,
             onClickAuto = onClickTranslate,
             smsProcessing = smsProcessing,
+            onClickTranslatedText = onClickTranslatedText
         )
     }
 }

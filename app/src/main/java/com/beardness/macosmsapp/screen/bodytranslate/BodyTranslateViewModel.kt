@@ -3,6 +3,7 @@ package com.beardness.macosmsapp.screen.bodytranslate
 import androidx.lifecycle.ViewModel
 import com.beardness.macosmsapp.di.qualifiers.IoCoroutineScope
 import com.beardness.macosmsapp.screen.bodytranslate.dto.BodyTranslatedViewDto
+import com.beardness.macosmsapp.usecase.clipboard.ClipboardUseCaseProtocol
 import com.beardness.macosmsapp.usecase.flow.body.BodyTranslateUseCaseProtocol
 import com.beardness.macosmsapp.usecase.flow.internet.InternetFlowProtocol
 import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
@@ -16,6 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class BodyTranslateViewModel @Inject constructor(
     private val bodyTranslateUseCase: BodyTranslateUseCaseProtocol,
+    private val clipboardUseCase: ClipboardUseCaseProtocol,
     private val internetFlow: InternetFlowProtocol,
     @IoCoroutineScope private val ioCoroutineScope: CoroutineScope,
 ) : ViewModel(), BodyTranslateViewModelProtocol {
@@ -59,6 +61,12 @@ class BodyTranslateViewModel @Inject constructor(
     override fun translate(text: String) {
         ioCoroutineScope.launch {
             bodyTranslateUseCase.translate(text = text)
+        }
+    }
+
+    override fun copyToClipboard(text: String) {
+        ioCoroutineScope.launch {
+            clipboardUseCase.copyToClipboard(text = text)
         }
     }
 }

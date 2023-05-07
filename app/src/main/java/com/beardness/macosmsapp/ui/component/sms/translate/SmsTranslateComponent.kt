@@ -22,6 +22,7 @@ fun SmsTranslateComponent(
     sms: SmsViewDto,
     onClickTranslate: () -> Unit,
     isSmsProcessing: Boolean,
+    onClickTranslatedText: (text: String) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -44,6 +45,7 @@ fun SmsTranslateComponent(
             body = sms.body,
             translates = sms.translates,
             onClickTranslate = onClickTranslate,
+            onClickTranslatedText = onClickTranslatedText,
         )
     }
 }
@@ -93,6 +95,7 @@ private fun ContentBlock(
     body: String,
     translates: SmsTranslateViewDto,
     onClickTranslate: () -> Unit,
+    onClickTranslatedText: (text: String) -> Unit,
 ) {
     val isTranslationAutoExist = translates.auto != null
     val isTranslationGeExist = translates.georgian != null
@@ -115,13 +118,15 @@ private fun ContentBlock(
         TranslationComponent(
             visibility = isTranslationAutoExist,
             title = "Translation ${SpecificChars.EMOJI_EARTH}",
-            text = translationAuto
+            text = translationAuto,
+            onClick = { onClickTranslatedText(translationAuto) },
         )
 
         TranslationComponent(
             visibility = isTranslationGeExist,
             title = "Georgia ${SpecificChars.EMOJI_GEORGIA}",
-            text = translationGe
+            text = translationGe,
+            onClick = { onClickTranslatedText(translationGe) },
         )
 
         TranslateButton(

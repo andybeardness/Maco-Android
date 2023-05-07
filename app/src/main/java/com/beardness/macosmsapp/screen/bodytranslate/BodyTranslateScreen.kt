@@ -43,6 +43,10 @@ fun BodyTranslateScreen(
         viewModel.updateEntered(text = new)
     }
 
+    val onClickTranslatedText: (text: String) -> Unit = { text ->
+        viewModel.copyToClipboard(text = text)
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -81,13 +85,15 @@ fun BodyTranslateScreen(
             TranslationComponent(
                 visibility = translatedAuto.isNotEmpty(),
                 title = "Translation ${SpecificChars.EMOJI_EARTH}",
-                text = translatedAuto
+                text = translatedAuto,
+                onClick = { onClickTranslatedText(translatedAuto) },
             )
 
             TranslationComponent(
                 visibility = translatedGe.isNotEmpty(),
                 title = "Georgia ${SpecificChars.EMOJI_GEORGIA}",
-                text = translatedGe
+                text = translatedGe,
+                onClick = { onClickTranslatedText(translatedGe) },
             )
         }
 

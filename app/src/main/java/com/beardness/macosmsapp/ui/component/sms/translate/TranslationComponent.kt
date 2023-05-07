@@ -1,6 +1,7 @@
 package com.beardness.macosmsapp.ui.component.sms.translate
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -17,11 +18,13 @@ fun TranslationComponent(
     visibility: Boolean,
     title: String,
     text: String,
+    onClick: () -> Unit,
 ) {
     AnimatedVisibility(visible = visibility) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
+                .clickable { onClick() }
                 .padding(vertical = Dimen.dp8)
         ) {
             Text(

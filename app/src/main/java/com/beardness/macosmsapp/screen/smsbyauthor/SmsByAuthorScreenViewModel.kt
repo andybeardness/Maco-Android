@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.beardness.macosmsapp.di.qualifiers.IoCoroutineScope
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsTranslateViewDto
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsViewDto
+import com.beardness.macosmsapp.usecase.clipboard.ClipboardUseCaseProtocol
 import com.beardness.macosmsapp.usecase.common.helpers.avatarcolorgenerator.AvatarColorGeneratorProtocol
 import com.beardness.macosmsapp.usecase.common.helpers.datetime.DateTimeFormatterProtocol
 import com.beardness.macosmsapp.usecase.flow.internet.InternetFlowProtocol
@@ -21,6 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SmsByAuthorScreenViewModel @Inject constructor(
     private val translateSmsUseCase: TranslateSmsUseCaseProtocol,
+    private val clipboardUseCase: ClipboardUseCaseProtocol,
     smsTranslatesFlow: SmsTranslatesFlowProtocol,
     internetFlow: InternetFlowProtocol,
     private val smsProcessingFlow: SmsProcessingFlowProtocol,
@@ -77,6 +79,12 @@ class SmsByAuthorScreenViewModel @Inject constructor(
             )
 
             smsProcessingFlow.pop(smsId = smsId)
+        }
+    }
+
+    override fun copyToClipboard(text: String) {
+        ioCoroutineScope.launch {
+            clipboardUseCase.copyToClipboard(text = text)
         }
     }
 

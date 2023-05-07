@@ -16,4 +16,6 @@ interface SmsByAuthorScreenViewModelProtocol {
     fun setup(author: String)
 
     fun translate(smsId: Int)
+
+    fun copyToClipboard(text: String)
 }

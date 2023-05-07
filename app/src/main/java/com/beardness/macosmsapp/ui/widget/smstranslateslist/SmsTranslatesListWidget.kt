@@ -13,6 +13,7 @@ fun SmsTranslatesWidget(
     smsCollection: List<SmsViewDto>,
     onClickAuto: (smsId: Int) -> Unit,
     smsProcessing: Set<Int>,
+    onClickTranslatedText: (text: String) -> Unit,
 ) {
     LazyColumn(
         modifier = Modifier
@@ -25,6 +26,7 @@ fun SmsTranslatesWidget(
                 sms = smsViewDto,
                 onClickTranslate = { onClickAuto(smsViewDto.id) },
                 isSmsProcessing = isSmsProcessing,
+                onClickTranslatedText = onClickTranslatedText,
             )
         }
     }
