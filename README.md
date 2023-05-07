@@ -34,3 +34,9 @@ I wanted to try : **Material3** + **Dynamic colors** + **Compose** + **SMS API**
 | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/l2.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/d2.png) |
 | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/l3.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/d3.png) |
 | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/l4.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/d4.png) |
+
+## Default theme
+
+|   |   |
+| - | - |
+| ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/dl.png)  | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/dd.png) |
