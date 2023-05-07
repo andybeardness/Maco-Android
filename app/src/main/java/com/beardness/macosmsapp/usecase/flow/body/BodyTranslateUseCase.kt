@@ -12,8 +12,8 @@ class BodyTranslateUseCase @Inject constructor(
     @QGeTranslator private val geTranslator: BaseTranslatorProtocol,
 ) : BodyTranslateUseCaseProtocol {
 
-    private val _entered = MutableStateFlow<String?>(value = null)
-    override val entered: StateFlow<String?> = _entered.asStateFlow()
+    private val _entered = MutableStateFlow<String>(value = "")
+    override val entered: StateFlow<String> = _entered.asStateFlow()
 
     private val _translated = MutableStateFlow<BodyTranslatedDto?>(value = null)
     override val translated: StateFlow<BodyTranslatedDto?> = _translated.asStateFlow()

@@ -1,6 +1,7 @@
 package com.beardness.macosmsapp.ui.component.sms.translate
 
-import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -115,6 +116,8 @@ private fun ContentBlock(
             fontWeight = FontWeight.Light,
         )
 
+        Spacer(modifier = Modifier.height(height = Dimen.dp8))
+
         TranslationComponent(
             visibility = isTranslationAutoExist,
             title = "Translation ${SpecificChars.EMOJI_EARTH}",
@@ -122,12 +125,16 @@ private fun ContentBlock(
             onClick = { onClickTranslatedText(translationAuto) },
         )
 
+        Spacer(modifier = Modifier.height(height = Dimen.dp8))
+
         TranslationComponent(
             visibility = isTranslationGeExist,
             title = "Georgia ${SpecificChars.EMOJI_GEORGIA}",
             text = translationGe,
             onClick = { onClickTranslatedText(translationGe) },
         )
+
+        Spacer(modifier = Modifier.height(height = Dimen.dp8))
 
         TranslateButton(
             visibility = isTranslationButtonVisible,
@@ -141,17 +148,39 @@ private fun TranslateButton(
     visibility: Boolean,
     onClick: () -> Unit,
 ) {
-    AnimatedVisibility(visible = visibility) {
+    AnimatedVisibility(
+        visible = visibility,
+        enter = slideInVertically(
+            animationSpec = tween(
+                durationMillis = 350,
+            ),
+            initialOffsetY = { size -> - size / 2}
+        ) + fadeIn(
+            animationSpec = tween(
+                durationMillis = 350,
+            ),
+        ),
+        exit = slideOutVertically(
+            animationSpec = tween(
+                durationMillis = 350,
+            ),
+            targetOffsetY = { size -> size / 2 }
+        ) + fadeOut(
+            animationSpec = tween(
+                durationMillis = 350,
+            ),
+        ),
+    ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { onClick() }
-                .background(color = MaterialTheme.colorScheme.background)
+                .background(color = MaterialTheme.colorScheme.onBackground.copy(alpha = .1f))
                 .padding(vertical = Dimen.dp16, horizontal = Dimen.dp8),
             contentAlignment = Alignment.Center,
         ) {
             Text(
-                text = "Translate ${SpecificChars.EMOJI_EARTH}",
+                text = "Translate ${SpecificChars.EMOJI_EARTH} ${SpecificChars.EMOJI_GEORGIA}",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Light,
                 color = MaterialTheme.colorScheme.onBackground,

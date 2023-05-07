@@ -64,9 +64,11 @@ fun AppNavigation() {
 
         composable(route = Route.BodyTranslated.route) {
             val viewModel = hiltViewModel<BodyTranslateViewModel>()
+            val initialInput = viewModel.input()
 
             BodyTranslateScreen(
                 viewModel = viewModel,
+                initialInput = initialInput,
             )
         }
     }

@@ -10,6 +10,7 @@ import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -21,10 +22,6 @@ class BodyTranslateViewModel @Inject constructor(
     private val internetFlow: InternetFlowProtocol,
     @IoCoroutineScope private val ioCoroutineScope: CoroutineScope,
 ) : ViewModel(), BodyTranslateViewModelProtocol {
-
-    override val entered: Flow<String?> =
-        bodyTranslateUseCase
-            .entered
 
     override val translated: Flow<BodyTranslatedViewDto?> =
         bodyTranslateUseCase
@@ -52,11 +49,15 @@ class BodyTranslateViewModel @Inject constructor(
                 }
             }
 
-    override fun updateEntered(text: String) {
+    private val input: StateFlow<String> = bodyTranslateUseCase.entered
+
+    override fun input(updated: String) {
         ioCoroutineScope.launch {
-            bodyTranslateUseCase.updateEntered(text = text)
+            bodyTranslateUseCase.updateEntered(text = updated)
         }
     }
+
+    override fun input(): String = input.value
 
     override fun translate(text: String) {
         ioCoroutineScope.launch {

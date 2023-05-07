@@ -1,6 +1,10 @@
 package com.beardness.macosmsapp.ui.component.sms.translate
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,12 +24,24 @@ fun TranslationComponent(
     text: String,
     onClick: () -> Unit,
 ) {
-    AnimatedVisibility(visible = visibility) {
+    AnimatedVisibility(
+        visible = visibility,
+        enter = slideInVertically(
+            animationSpec = tween(
+                durationMillis = 350,
+                delayMillis = 350,
+            ),
+            initialOffsetY = { size -> - size / 10 },
+        ) + fadeIn(
+            animationSpec = tween(
+                durationMillis = 350,
+                delayMillis = 350),
+        ),
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .clickable { onClick() }
-                .padding(vertical = Dimen.dp8)
         ) {
             Text(
                 text = title,

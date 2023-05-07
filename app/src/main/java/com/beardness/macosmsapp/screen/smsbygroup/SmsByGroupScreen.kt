@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Assignment
+import androidx.compose.material.icons.rounded.Translate
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -61,7 +61,7 @@ fun SmsByGroup(
                     backgroundColor = MaterialTheme.colorScheme.primary
                 ) {
                     Icon(
-                        imageVector = Icons.Rounded.Assignment ,
+                        imageVector = Icons.Rounded.Translate ,
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onPrimary,
                     )

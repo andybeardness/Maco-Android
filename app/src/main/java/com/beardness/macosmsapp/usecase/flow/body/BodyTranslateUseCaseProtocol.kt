@@ -4,7 +4,7 @@ import com.beardness.macosmsapp.usecase.flow.body.dto.BodyTranslatedDto
 import kotlinx.coroutines.flow.StateFlow
 
 interface BodyTranslateUseCaseProtocol {
-    val entered: StateFlow<String?>
+    val entered: StateFlow<String>
     val translated: StateFlow<BodyTranslatedDto?>
     val inProgress: StateFlow<Boolean>
 
