@@ -16,7 +16,7 @@ I wanted to try : **Material3** + **Compose** + **SMS API** + **Google translate
 
 |   |   |
 | - | - |
-| <img src="https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/r1.gif" width="400"> | <img src="https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/r2.gif" width="400"> |
+| <img src="https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/r1.gif" width="300"> | <img src="https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/r2.gif" width="300"> |
 
 |   |   |   |   |
 | - | - | - | - |
