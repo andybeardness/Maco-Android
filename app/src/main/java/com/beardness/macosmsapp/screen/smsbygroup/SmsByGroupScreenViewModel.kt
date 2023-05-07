@@ -46,7 +46,7 @@ class SmsByGroupScreenViewModel @Inject constructor(
             .flow
             .map { status ->
                 when (status) {
-                    InternetStatus.Available -> "${SpecificChars.EMOJI_GEORGIA} Maco SMS App"
+                    InternetStatus.Available -> "${SpecificChars.EMOJI_GEORGIA} Maco SMS"
                     InternetStatus.Lost -> "${SpecificChars.EMOJI_ERROR} No connection"
                 }
             }
