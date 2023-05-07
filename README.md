@@ -40,3 +40,9 @@ I wanted to try : **Material3** + **Dynamic colors** + **Compose** + **SMS API**
 |   |   |
 | - | - |
 | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/dl.png)  | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/dd.png) |
+
+## Locales : EN & RU
+
+|   |   |
+| - | - |
+| ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/le.png)  | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/lr.png) |

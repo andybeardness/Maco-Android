@@ -7,7 +7,6 @@ import com.beardness.macosmsapp.usecase.flow.internet.InternetFlowProtocol
 import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
 import com.beardness.macosmsapp.usecase.flow.smsgroup.SmsGroupFlowProtocol
 import com.beardness.macosmsapp.usecase.usecase.updatesmsflow.UpdateSmsUseCaseProtocol
-import com.beardness.macosmsapp.utils.SpecificChars
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
