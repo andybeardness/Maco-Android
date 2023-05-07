@@ -111,6 +111,9 @@ dependencies {
 
     // COMPOSE PERMISSIONS
     implementation "com.google.accompanist:accompanist-permissions:0.31.0-alpha"
+
+    // SPLASH SCREEN
+    implementation "androidx.core:core-splashscreen:1.0.0"
 }
 
 kapt {
