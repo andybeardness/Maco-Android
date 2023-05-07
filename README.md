@@ -12,3 +12,16 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 
 I wanted to try : **Material3** + **Compose** + **SMS API** + **Google translate API**
 
+# Preview
+
+| Start | Home | SMS | Sandbox |
+| - | - | - | - |
+| ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s1.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s2.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s3.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s4.png) |
+
+| | Light | Dark |
+| - | - | - |
+| Color | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/l1.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/d1.png) |
+| Color | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/l2.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/d2.png) |
+| Color | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/l3.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/d3.png) |
+| Color | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/l4.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/d4.png) |
+
