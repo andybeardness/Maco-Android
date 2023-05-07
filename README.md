@@ -10,7 +10,7 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 
 # Motivation
 
-I wanted to try : **Material3** + **Compose** + **SMS API** + **Google translate API**
+I wanted to try : **Material3** + **Dynamic colors** + **Compose** + **SMS API** + **Google translate API**
 
 # Preview
 
