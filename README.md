@@ -14,13 +14,19 @@ I wanted to try : **Material3** + **Dynamic colors** + **Compose** + **SMS API**
 
 # Preview
 
+## Screen record
+
 |   |   |
 | - | - |
 | <img src="https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/r1.gif" width="300"> | <img src="https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/r2.gif" width="300"> |
 
+## Screens
+
 |   |   |   |   |
 | - | - | - | - |
 | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s1.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s2.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s3.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s4.png) |
+
+## Dynamic colors
 
 |   |   |
 | - | - |
