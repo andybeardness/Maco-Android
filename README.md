@@ -14,7 +14,7 @@ I wanted to try : **Material3** + **Compose** + **SMS API** + **Google translate
 
 # Preview
 
-| Start | Home | SMS | Sandbox |
+| | | | |
 | - | - | - | - |
 | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s1.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s2.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s3.png) | ![](https://raw.githubusercontent.com/andybeardness/Maco-Android/main/preview/s4.png) |
 
