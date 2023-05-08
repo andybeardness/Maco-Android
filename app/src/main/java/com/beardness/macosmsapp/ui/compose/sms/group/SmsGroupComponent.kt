@@ -1,4 +1,4 @@
-package com.beardness.macosmsapp.ui.component.sms.group
+package com.beardness.macosmsapp.ui.compose.sms.group
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -7,14 +7,13 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.beardness.macosmsapp.ui.component.sms.AvatarComponent
-import com.beardness.macosmsapp.ui.component.spacer.SpacerV
+import com.beardness.macosmsapp.ui.compose.sms.AvatarComponent
+import com.beardness.macosmsapp.ui.compose.spacer.SpacerColumn
+import com.beardness.macosmsapp.ui.compose.spacer.SpacerRow
 import com.beardness.macosmsapp.ui.theme.dimen.Dimens
-import com.beardness.macosmsapp.ui.theme.shape.CustomShapes
 
 @Composable
 fun SmsGroupComponent(
@@ -36,7 +35,7 @@ fun SmsGroupComponent(
         ) {
             AvatarComponent(color = avatarColor)
 
-            SpacerV(dp = Dimens.dp16)
+            SpacerRow(dp = Dimens.dp16)
 
             Column(
                 modifier = Modifier
@@ -44,11 +43,14 @@ fun SmsGroupComponent(
             ) {
                 Text(
                     text = author,
-                    fontStyle = MaterialTheme.typography.headlineMedium.fontStyle,
+                    style = MaterialTheme.typography.headlineMedium,
                 )
+                
+                SpacerColumn(dp = Dimens.dp8)
+                
                 Text(
                     text = body,
-                    fontStyle = MaterialTheme.typography.bodyMedium.fontStyle,
+                    style = MaterialTheme.typography.bodyMedium,
                     maxLines = 3,
                     overflow = TextOverflow.Ellipsis,
                 )

@@ -6,10 +6,10 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsViewDto
-import com.beardness.macosmsapp.ui.component.sms.translate.SmsTranslateComponent
+import com.beardness.macosmsapp.ui.compose.sms.SmsComponent
 
 @Composable
-fun SmsTranslatesWidget(
+fun SmsTranslatesListWidget(
     smsCollection: List<SmsViewDto>,
     onClickAuto: (smsId: Int) -> Unit,
     smsProcessing: Set<Int>,
@@ -22,11 +22,11 @@ fun SmsTranslatesWidget(
         items(items = smsCollection) {smsViewDto ->
             val isSmsProcessing = smsProcessing.contains(element = smsViewDto.id)
 
-            SmsTranslateComponent(
+            SmsComponent(
                 sms = smsViewDto,
-                onClickTranslate = { onClickAuto(smsViewDto.id) },
-                isSmsProcessing = isSmsProcessing,
-                onClickTranslatedText = onClickTranslatedText,
+                onClickBody = { onClickAuto(smsViewDto.id) },
+                processing = isSmsProcessing,
+                onClickText = onClickTranslatedText,
             )
         }
     }

@@ -17,7 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.beardness.macosmsapp.R
-import com.beardness.macosmsapp.ui.component.sms.translate.TranslationComponent
+import com.beardness.macosmsapp.ui.compose.sms.SmsTranslateComponent
 import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 
 @Composable
@@ -126,20 +126,16 @@ fun BodyTranslateScreen(
                     vertical = Dimens.dp8,
                 )
         ) {
-            TranslationComponent(
-                visibility = translatedAuto.isNotEmpty(),
+            SmsTranslateComponent(
                 title = translationAutoText,
                 text = translatedAuto,
-                onClick = { onClickTranslatedText(translatedAuto) },
+                onClickText = { onClickTranslatedText(translatedAuto) },
             )
 
-            Spacer(modifier = Modifier.height(height = Dimens.dp8))
-
-            TranslationComponent(
-                visibility = translatedGe.isNotEmpty(),
+            SmsTranslateComponent(
                 title = translationGeText,
                 text = translatedGe,
-                onClick = { onClickTranslatedText(translatedGe) },
+                onClickText = { onClickTranslatedText(translatedGe) },
             )
         }
     }

@@ -40,7 +40,7 @@ fun TopAppBar(
                 modifier = Modifier
                     .weight(weight = 1f),
                 text = title,
-                fontStyle = MaterialTheme.typography.headlineLarge.fontStyle,
+                style = MaterialTheme.typography.headlineLarge,
                 textAlign = TextAlign.Center,
                 color = MaterialTheme.colorScheme.onBackground,
             )

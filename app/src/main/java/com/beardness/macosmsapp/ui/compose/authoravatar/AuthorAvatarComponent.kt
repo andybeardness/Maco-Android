@@ -1,4 +1,4 @@
-package com.beardness.macosmsapp.ui.component.authoravatar
+package com.beardness.macosmsapp.ui.compose.authoravatar
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

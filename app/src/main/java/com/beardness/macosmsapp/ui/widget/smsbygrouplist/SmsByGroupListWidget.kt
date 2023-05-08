@@ -7,7 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.beardness.macosmsapp.extensions.ColorExtensions
 import com.beardness.macosmsapp.screen.smsbygroup.dto.GroupSmsViewDto
-import com.beardness.macosmsapp.ui.component.sms.group.SmsGroupComponent
+import com.beardness.macosmsapp.ui.compose.sms.group.SmsGroupComponent
 
 @Composable
 fun SmsByGroupListWidget(

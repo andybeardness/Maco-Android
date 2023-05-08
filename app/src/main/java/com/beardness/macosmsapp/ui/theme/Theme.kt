@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import com.beardness.macosmsapp.ui.theme.color.DarkThemeColors
 import com.beardness.macosmsapp.ui.theme.color.LightThemeColors
-import com.beardness.macosmsapp.ui.theme.shape.Shapes
-import com.beardness.macosmsapp.ui.theme.typography.AppTypography
+import com.beardness.macosmsapp.ui.theme.shape.appShapes
+import com.beardness.macosmsapp.ui.theme.typography.appTypography
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
@@ -31,14 +31,14 @@ fun MacoSMSAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compos
         color = colorScheme.background,
     )
 
-    val typography = AppTypography
+    val typography = appTypography
 
-    val shapes = Shapes
+    val shapes = appShapes
 
     MaterialTheme(
         colorScheme = colorScheme,
         typography = typography,
         shapes = shapes,
-        content = content
+        content = content,
     )
 }
