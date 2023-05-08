@@ -11,7 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.beardness.macosmsapp.ui.component.toolbar.refresh.ToolbarRefreshButton
 import com.beardness.macosmsapp.ui.component.toolbar.title.ToolbarTitleComponent
-import com.beardness.macosmsapp.ui.theme.dimen.Dimen
+import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 
 @Composable
 fun ToolbarSmsByGroupWidget(
@@ -21,9 +21,9 @@ fun ToolbarSmsByGroupWidget(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(height = Dimen.dp64)
+            .height(height = Dimens.dp64)
             .background(color = MaterialTheme.colorScheme.background)
-            .padding(horizontal = Dimen.dp16),
+            .padding(horizontal = Dimens.dp16),
         verticalAlignment = Alignment.CenterVertically
     ) {
         ToolbarTitleComponent(

@@ -3,8 +3,6 @@ package com.beardness.macosmsapp.screen.bodytranslate
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -20,7 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.beardness.macosmsapp.R
 import com.beardness.macosmsapp.ui.component.sms.translate.TranslationComponent
-import com.beardness.macosmsapp.ui.theme.dimen.Dimen
+import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 
 @Composable
 fun BodyTranslateScreen(
@@ -98,7 +96,7 @@ fun BodyTranslateScreen(
                         .weight(weight = 1f)
                         .clickable { onClickTranslate(input) }
                         .background(color = MaterialTheme.colorScheme.onBackground.copy(alpha = .1f))
-                        .padding(all = Dimen.dp16),
+                        .padding(all = Dimens.dp16),
                     contentAlignment = Alignment.Center,
                 ) {
                     Text(
@@ -124,8 +122,8 @@ fun BodyTranslateScreen(
                 .weight(weight = 1f)
                 .verticalScroll(state = rememberScrollState())
                 .padding(
-                    horizontal = Dimen.dp16,
-                    vertical = Dimen.dp8,
+                    horizontal = Dimens.dp16,
+                    vertical = Dimens.dp8,
                 )
         ) {
             TranslationComponent(
@@ -135,7 +133,7 @@ fun BodyTranslateScreen(
                 onClick = { onClickTranslatedText(translatedAuto) },
             )
 
-            Spacer(modifier = Modifier.height(height = Dimen.dp8))
+            Spacer(modifier = Modifier.height(height = Dimens.dp8))
 
             TranslationComponent(
                 visibility = translatedGe.isNotEmpty(),

@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import com.beardness.macosmsapp.R
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsTranslateViewDto
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsViewDto
-import com.beardness.macosmsapp.ui.theme.dimen.Dimen
+import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 
 @Composable
 fun SmsTranslateComponent(
@@ -30,8 +30,8 @@ fun SmsTranslateComponent(
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                vertical = Dimen.dp8,
-                horizontal = Dimen.dp16,
+                vertical = Dimens.dp8,
+                horizontal = Dimens.dp16,
             )
     ) {
         IdDateTimeLine(
@@ -58,8 +58,8 @@ private fun IdDateTimeLine(id: Int, datetime: String) {
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                top = Dimen.dp8,
-                bottom = Dimen.dp2,
+                top = Dimens.dp8,
+                bottom = Dimens.dp2,
             ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -120,7 +120,7 @@ private fun ContentBlock(
             fontWeight = FontWeight.Light,
         )
 
-        Spacer(modifier = Modifier.height(height = Dimen.dp8))
+        Spacer(modifier = Modifier.height(height = Dimens.dp8))
 
         TranslationComponent(
             visibility = isTranslationAutoExist,
@@ -129,7 +129,7 @@ private fun ContentBlock(
             onClick = { onClickTranslatedText(translationAuto) },
         )
 
-        Spacer(modifier = Modifier.height(height = Dimen.dp8))
+        Spacer(modifier = Modifier.height(height = Dimens.dp8))
 
         TranslationComponent(
             visibility = isTranslationGeExist,
@@ -138,7 +138,7 @@ private fun ContentBlock(
             onClick = { onClickTranslatedText(translationGe) },
         )
 
-        Spacer(modifier = Modifier.height(height = Dimen.dp8))
+        Spacer(modifier = Modifier.height(height = Dimens.dp8))
 
         TranslateButton(
             visibility = isTranslationButtonVisible,
@@ -182,7 +182,7 @@ private fun TranslateButton(
                 .fillMaxWidth()
                 .clickable { onClick() }
                 .background(color = MaterialTheme.colorScheme.onBackground.copy(alpha = .1f))
-                .padding(vertical = Dimen.dp16, horizontal = Dimen.dp8),
+                .padding(vertical = Dimens.dp16, horizontal = Dimens.dp8),
             contentAlignment = Alignment.Center,
         ) {
             Text(

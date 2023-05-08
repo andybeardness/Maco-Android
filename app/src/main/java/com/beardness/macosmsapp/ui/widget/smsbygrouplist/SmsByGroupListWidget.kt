@@ -5,6 +5,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.beardness.macosmsapp.extensions.ColorExtensions
 import com.beardness.macosmsapp.screen.smsbygroup.dto.GroupSmsViewDto
 import com.beardness.macosmsapp.ui.component.sms.group.SmsGroup
 
@@ -19,12 +20,12 @@ fun SmsByGroupListWidget(
     ) {
         items(count = sms.size) { index ->
             sms.getOrNull(index = index)?.let { current ->
+                val avatarColor = ColorExtensions.avatarColor(token = current.author)
+
                 SmsGroup(
-                    avatarColor = current.avatarColor,
+                    avatarColor = avatarColor,
                     author = current.author,
                     body = current.body,
-                    date = current.date,
-                    time = current.time,
                     onClick = { onClickAuthor(current.author) }
                 )
             }

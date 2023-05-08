@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.beardness.macosmsapp.ui.component.authoravatar.AuthorAvatarComponent
 import com.beardness.macosmsapp.ui.component.toolbar.title.ToolbarTitleComponent
-import com.beardness.macosmsapp.ui.theme.dimen.Dimen
+import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 
 @Composable
 fun ToolbarSmsByAuthorWidget(
@@ -18,8 +18,8 @@ fun ToolbarSmsByAuthorWidget(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(height = Dimen.dp64)
-            .padding(horizontal = Dimen.dp16),
+            .height(height = Dimens.dp64)
+            .padding(horizontal = Dimens.dp16),
         verticalAlignment = Alignment.CenterVertically
     ) {
         AuthorAvatarComponent(
@@ -29,7 +29,7 @@ fun ToolbarSmsByAuthorWidget(
         Spacer(
             modifier = Modifier
                 .width(
-                    width = Dimen.dp16,
+                    width = Dimens.dp16,
                 ),
         )
 

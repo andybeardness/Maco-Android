@@ -13,21 +13,21 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import com.beardness.macosmsapp.ui.theme.dimen.Dimen
-import com.beardness.macosmsapp.ui.theme.shape.Shape
+import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.shape.CustomShapes
 
 @Composable
 fun AuthorAvatarComponent(
     avatarColor: Color,
-    boxSize: Dp = Dimen.dp32,
-    imageSize: Dp = Dimen.dp24,
+    boxSize: Dp = Dimens.dp32,
+    imageSize: Dp = Dimens.dp24,
 ) {
     Box(
         modifier = Modifier
             .size(size = boxSize)
             .background(
                 color = avatarColor,
-                shape = Shape.circle,
+                shape = CustomShapes.circle,
             ),
         contentAlignment = Alignment.Center,
     ) {

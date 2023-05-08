@@ -5,7 +5,6 @@ import com.beardness.macosmsapp.di.qualifiers.IoCoroutineScope
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsTranslateViewDto
 import com.beardness.macosmsapp.screen.smsbyauthor.dto.SmsViewDto
 import com.beardness.macosmsapp.usecase.clipboard.ClipboardUseCaseProtocol
-import com.beardness.macosmsapp.usecase.common.helpers.avatarcolorgenerator.AvatarColorGeneratorProtocol
 import com.beardness.macosmsapp.usecase.common.helpers.datetime.DateTimeFormatterProtocol
 import com.beardness.macosmsapp.usecase.flow.internet.InternetFlowProtocol
 import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
@@ -26,21 +25,12 @@ class SmsByAuthorScreenViewModel @Inject constructor(
     smsTranslatesFlow: SmsTranslatesFlowProtocol,
     internetFlow: InternetFlowProtocol,
     private val smsProcessingFlow: SmsProcessingFlowProtocol,
-    private val avatarColorGenerator: AvatarColorGeneratorProtocol,
     private val dateTimeManager: DateTimeFormatterProtocol,
     @IoCoroutineScope private val ioCoroutineScope: CoroutineScope,
 ) : ViewModel(), SmsByAuthorScreenViewModelProtocol {
 
     private val _authorFlow: MutableStateFlow<String> = MutableStateFlow(value = "")
     override val authorFlow = _authorFlow.asStateFlow()
-
-    override val authorAvatarColorFlow =
-        authorFlow.map { author ->
-            avatarColorGenerator
-                .generate(
-                    author = author,
-                )
-        }
 
     override val smsByAuthorFlow: Flow<List<SmsViewDto>> =
         combine(

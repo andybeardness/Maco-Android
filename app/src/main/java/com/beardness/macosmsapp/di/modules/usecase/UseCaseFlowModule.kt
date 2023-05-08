@@ -4,7 +4,6 @@ import android.content.Context
 import com.beardness.macosmsapp.di.qualifiers.IoCoroutineScope
 import com.beardness.macosmsapp.source.repo.smscache.SmsCacheProxyRepoProtocol
 import com.beardness.macosmsapp.source.repo.translate.TranslateRepoProtocol
-import com.beardness.macosmsapp.usecase.common.helpers.avatarcolorgenerator.AvatarColorGeneratorProtocol
 import com.beardness.macosmsapp.usecase.common.helpers.datetime.DateTimeFormatterProtocol
 import com.beardness.macosmsapp.usecase.flow.internet.InternetFlow
 import com.beardness.macosmsapp.usecase.flow.internet.InternetFlowProtocol
@@ -31,12 +30,10 @@ object UseCaseFlowModule {
     fun provideSmsGroupFlow(
         smsCacheRepo: SmsCacheProxyRepoProtocol,
         dateTimeManager: DateTimeFormatterProtocol,
-        avatarColorGenerator: AvatarColorGeneratorProtocol,
     ): SmsGroupFlowProtocol =
         SmsGroupFlow(
             smsCacheRepo = smsCacheRepo,
             dateTimeManager = dateTimeManager,
-            avatarColorGenerator = avatarColorGenerator,
         )
 
     @Provides

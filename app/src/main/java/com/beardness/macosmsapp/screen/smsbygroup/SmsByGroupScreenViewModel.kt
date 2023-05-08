@@ -33,7 +33,6 @@ class SmsByGroupScreenViewModel @Inject constructor(
                             body = smsGroupDto.body,
                             date = smsGroupDto.date,
                             time = smsGroupDto.time,
-                            avatarColor = smsGroupDto.avatarColor,
                         )
                     }
             }

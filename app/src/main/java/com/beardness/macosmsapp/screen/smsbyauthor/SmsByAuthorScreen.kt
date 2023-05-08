@@ -6,7 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import com.beardness.macosmsapp.extensions.ColorExtensions
 import com.beardness.macosmsapp.ui.widget.smstranslateslist.SmsTranslatesWidget
 import com.beardness.macosmsapp.ui.widget.toolbar.smsbyauthor.ToolbarSmsByAuthorWidget
 import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
@@ -16,7 +16,6 @@ fun SmsByAuthorScreen(
     viewModel: SmsByAuthorScreenViewModelProtocol
 ) {
     val author by viewModel.authorFlow.collectAsState()
-    val authorAvatarColor by viewModel.authorAvatarColorFlow.collectAsState(initial = Color.Unspecified)
     val sms by viewModel.smsByAuthorFlow.collectAsState(initial = listOf())
     val internetStatus by viewModel.internetConnectionFlow.collectAsState(initial = InternetStatus.Lost)
     val smsProcessing by viewModel.smsProcessingCollectionFlow.collectAsState(initial = emptySet())
@@ -36,12 +35,14 @@ fun SmsByAuthorScreen(
         viewModel.copyToClipboard(text = text)
     }
 
+    val avatarColor = ColorExtensions.avatarColor(token = author)
+
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
         ToolbarSmsByAuthorWidget(
-            avatarColor = authorAvatarColor,
+            avatarColor = avatarColor,
             author = author,
         )
 

@@ -9,6 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import com.beardness.macosmsapp.ui.theme.color.DarkThemeColors
 import com.beardness.macosmsapp.ui.theme.color.LightThemeColors
+import com.beardness.macosmsapp.ui.theme.shape.Shapes
+import com.beardness.macosmsapp.ui.theme.typography.AppTypography
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
@@ -18,19 +20,25 @@ fun MacoSMSAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compos
 
     val dynamicColor = Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
 
-    val colors = when {
+    val colorScheme = when {
         dynamicColor && darkTheme -> dynamicDarkColorScheme(context = LocalContext.current)
         dynamicColor && !darkTheme -> dynamicLightColorScheme(context = LocalContext.current)
         darkTheme -> DarkThemeColors
         else -> LightThemeColors
     }
 
-    systemUiController.setSystemBarsColor(color = colors.background)
+    systemUiController.setSystemBarsColor(
+        color = colorScheme.background,
+    )
+
+    val typography = AppTypography
+
+    val shapes = Shapes
 
     MaterialTheme(
-        colorScheme = colors,
-//        typography = Typography,
-//        shapes = Shapes,
+        colorScheme = colorScheme,
+        typography = typography,
+        shapes = shapes,
         content = content
     )
 }

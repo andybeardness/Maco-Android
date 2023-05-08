@@ -19,7 +19,7 @@ import androidx.compose.ui.res.stringResource
 import com.beardness.macosmsapp.R
 import com.beardness.macosmsapp.screen.common.PermissionScreen
 import com.beardness.macosmsapp.screen.common.SmsPermissionScreen
-import com.beardness.macosmsapp.ui.theme.dimen.Dimen
+import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 import com.beardness.macosmsapp.ui.widget.smsbygrouplist.SmsByGroupListWidget
 import com.beardness.macosmsapp.ui.widget.toolbar.smsbygroup.ToolbarSmsByGroupWidget
 
@@ -67,7 +67,7 @@ fun SmsByGroup(
                 FloatingActionButton(
                     modifier = Modifier
                         .align(alignment = Alignment.BottomEnd)
-                        .padding(all = Dimen.dp32),
+                        .padding(all = Dimens.dp32),
                     onClick = navigateToBodyTranslate,
                     containerColor = MaterialTheme.colorScheme.primary,
                 ) {

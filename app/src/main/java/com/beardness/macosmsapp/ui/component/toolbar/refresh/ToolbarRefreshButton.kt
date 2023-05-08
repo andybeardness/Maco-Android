@@ -6,14 +6,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Refresh
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
-import com.beardness.macosmsapp.ui.theme.dimen.Dimen
-import com.beardness.macosmsapp.ui.theme.shape.Shape
+import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.shape.CustomShapes
 
 @Composable
 fun ToolbarRefreshButton(
@@ -22,10 +21,10 @@ fun ToolbarRefreshButton(
 ) {
     Image(
         modifier = Modifier
-            .clip(shape = Shape.circle)
+            .clip(shape = CustomShapes.circle)
             .clickable { onClick() }
-            .padding(all = Dimen.dp8)
-            .size(size = Dimen.dp32),
+            .padding(all = Dimens.dp8)
+            .size(size = Dimens.dp32),
         imageVector = Icons.Rounded.Refresh,
         contentDescription = null,
         colorFilter = ColorFilter.tint(color = color)

@@ -1,149 +1,94 @@
 package com.beardness.macosmsapp.ui.component.sms.group
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.AlternateEmail
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
-import com.beardness.macosmsapp.ui.component.authoravatar.AuthorAvatarComponent
-import com.beardness.macosmsapp.ui.theme.dimen.Dimen
-
-private const val BODY_MAX_LINES = 3
+import com.beardness.macosmsapp.ui.component.spacer.SpacerV
+import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.shape.CustomShapes
 
 @Composable
 fun SmsGroup(
     avatarColor: Color,
     author: String,
     body: String,
-    date: String,
-    time: String,
     onClick: () -> Unit,
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .defaultMinSize(minHeight = Dimen.dp96)
-            .clickable { onClick() }
-            .padding(
-                vertical = Dimen.dp16,
-                horizontal = Dimen.dp16,
-            ),
-    ) {
-        AvatarBlock(
-            avatarColor = avatarColor,
-        )
-
-        ContentBlock(
-            author = author,
-            body = body,
-            date = date,
-            time = time,
-        )
-    }
-}
-
-@Composable
-private fun AvatarBlock(
-    avatarColor: Color
-) {
-    Box(
-        contentAlignment = Alignment.TopCenter,
-    ) {
-        AuthorAvatarComponent(avatarColor = avatarColor)
-    }
-
-    Spacer(
-        modifier = Modifier
-            .width(width = Dimen.dp16),
-    )
-}
-
-@Composable
-private fun ContentBlock(
-    author: String,
-    body: String,
-    date: String,
-    time: String,
-) {
     Column {
-        AuthorDateTimeBlock(
-            author = author,
-            date = date,
-            time = time,
-        )
-
-        BodyBlock(
-            body = body,
-        )
-    }
-}
-
-@Composable
-private fun AuthorDateTimeBlock(
-    author: String,
-    date: String,
-    time: String,
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        Text(
+        Row(
             modifier = Modifier
-                .weight(weight = 1f),
-            text = author,
-            fontSize = 16.sp,
-            fontWeight = FontWeight.SemiBold,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
+                .clickable { onClick() }
+                .padding(
+                    top = Dimens.dp12,
+                    bottom = Dimens.dp12,
+                    start = Dimens.dp16,
+                    end = Dimens.dp24,
+                ),
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(size = Dimens.dp40)
+                    .clip(shape = CustomShapes.circle)
+                    .background(color = avatarColor),
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    modifier = Modifier
+                        .size(size = Dimens.dp24),
+                    imageVector = Icons.Rounded.AlternateEmail,
+                    contentDescription = null,
+                    tint = Color.White.copy(alpha = .3f)
+                )
+            }
 
-        Text(
-            modifier = Modifier,
-            text = "$date $time",
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Thin,
-            color = MaterialTheme.colorScheme.onBackground.copy(alpha = .5f),
+            SpacerV(dp = Dimens.dp16)
+
+            Column(
+                modifier = Modifier
+                    .weight(weight = 1f),
+            ) {
+                Text(
+                    text = author,
+                    fontStyle = MaterialTheme.typography.headlineMedium.fontStyle,
+                )
+                Text(
+                    text = body,
+                    fontStyle = MaterialTheme.typography.bodyMedium.fontStyle,
+                    maxLines = 3,
+                    overflow = TextOverflow.Ellipsis,
+                )
+            }
+        }
+
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = Dimens.dp16, end = Dimens.dp24)
+                .height(height = Dimens.dp1)
+                .background(color = MaterialTheme.colorScheme.onBackground.copy(alpha = .1f)),
         )
     }
 }
-
-@Composable
-private fun BodyBlock(
-    body: String,
-) {
-    Text(
-        text = body,
-        maxLines = BODY_MAX_LINES,
-        overflow = TextOverflow.Ellipsis,
-        fontSize = 16.sp,
-        color = MaterialTheme.colorScheme.onBackground,
-        fontWeight = FontWeight.Light,
-    )
-}
-
 
 @Preview
 @Composable
-fun Preview_GroupSms() {
+fun PreviewSmsGroup() {
     SmsGroup(
-        avatarColor = Color.Green,
-        author = "TBC SMS",
-        body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor " +
-                "incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis " +
-                "nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. " +
-                "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore " +
-                "eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt " +
-                "in culpa qui officia deserunt mollit anim id est laborum.",
-        date = "2022.12.22",
-        time = "14:41",
-        onClick = {},
+        avatarColor = MaterialTheme.colorScheme.primary.copy(alpha = .3f),
+        author = "Hambart",
+        body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        onClick = { },
     )
 }

@@ -10,8 +10,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
-import com.beardness.macosmsapp.ui.theme.dimen.Dimen
-import com.beardness.macosmsapp.ui.theme.shape.Shape
+import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.shape.CustomShapes
 import com.beardness.macosmsapp.R
 
 @Composable
@@ -37,17 +37,17 @@ fun SmsPermissionScreen(
             Spacer(
                 modifier = Modifier
                     .height(
-                        height = Dimen.dp16,
+                        height = Dimens.dp16,
                     ),
             )
 
             Box(
                 modifier = Modifier
-                    .clip(shape = Shape.circle)
+                    .clip(shape = CustomShapes.circle)
                     .background(color = MaterialTheme.colorScheme.primary)
                     .padding(
-                        horizontal = Dimen.dp32,
-                        vertical = Dimen.dp16,
+                        horizontal = Dimens.dp32,
+                        vertical = Dimens.dp16,
                     )
                     .clickable { onClick() },
                 contentAlignment = Alignment.Center,
