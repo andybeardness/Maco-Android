@@ -1,5 +1,6 @@
 package com.beardness.macosmsapp.ui.widget.toolbar
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -16,36 +17,49 @@ fun TopAppBar(
     navigation: @Composable BoxScope.() -> Unit,
     action: @Composable (BoxScope.() -> Unit)?,
 ) {
-    Row(
+    Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(height = Dimens.dp64)
-            .padding(horizontal = Dimens.dp4),
-        verticalAlignment = Alignment.CenterVertically,
     ) {
-        Box(
+        Row(
             modifier = Modifier
-                .size(size = Dimens.dp48),
-            contentAlignment = Alignment.Center,
+                .fillMaxWidth()
+                .height(height = Dimens.dp64)
+                .padding(horizontal = Dimens.dp4),
+            verticalAlignment = Alignment.CenterVertically,
         ) {
-            navigation()
+            Box(
+                modifier = Modifier
+                    .size(size = Dimens.dp48),
+                contentAlignment = Alignment.Center,
+            ) {
+                navigation()
+            }
+
+            Text(
+                modifier = Modifier
+                    .weight(weight = 1f),
+                text = title,
+                fontStyle = MaterialTheme.typography.headlineLarge.fontStyle,
+                textAlign = TextAlign.Center,
+                color = MaterialTheme.colorScheme.onBackground,
+            )
+
+            Box(
+                modifier = Modifier
+                    .size(size = Dimens.dp48),
+                contentAlignment = Alignment.Center,
+            ) {
+                action?.let { current -> current() }
+            }
         }
 
-        Text(
+        Spacer(
             modifier = Modifier
-                .weight(weight = 1f),
-            text = title,
-            fontStyle = MaterialTheme.typography.headlineLarge.fontStyle,
-            textAlign = TextAlign.Center,
+                .fillMaxWidth()
+                .height(height = Dimens.dp1)
+                .background(color = MaterialTheme.colorScheme.onBackground.copy(alpha = .3f)),
         )
-
-        Box(
-            modifier = Modifier
-                .size(size = Dimens.dp48),
-            contentAlignment = Alignment.Center,
-        ) {
-            action?.let { current -> current() }
-        }
     }
 }
 

@@ -34,12 +34,7 @@ fun SmsGroupComponent(
                     end = Dimens.dp24,
                 ),
         ) {
-            AvatarComponent(
-                modifier = Modifier
-                    .size(size = Dimens.dp40)
-                    .clip(shape = CustomShapes.circle)
-                    .background(color = avatarColor),
-            )
+            AvatarComponent(color = avatarColor)
 
             SpacerV(dp = Dimens.dp16)
 

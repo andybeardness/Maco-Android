@@ -55,12 +55,7 @@ fun SmsByAuthorScreen(
         TopAppBar(
             title = author,
             navigation = {
-                AvatarComponent(
-                    modifier = Modifier
-                        .size(size = Dimens.dp40)
-                        .clip(shape = CustomShapes.circle)
-                        .background(color = avatarColor),
-                )
+                AvatarComponent(color = avatarColor)
             },
             action = {
                  TopAppBarIcon(
