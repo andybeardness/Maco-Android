@@ -7,6 +7,6 @@
     <string name="translation_ge">Georgia 🇬🇪</string>
     <string name="sms_permission">Need to accept SMS permission</string>
     <string name="request">Request</string>
-    <string name="main_toolbar_text" translatable="false">🇬🇪  Maco SMS</string>
-    <string name="main_toolbar_text_no_connection">🚫  No internet</string>
+    <string name="main_toolbar_text" translatable="false">Maco SMS</string>
+    <string name="main_toolbar_text_no_connection">No internet</string>
 </resources>

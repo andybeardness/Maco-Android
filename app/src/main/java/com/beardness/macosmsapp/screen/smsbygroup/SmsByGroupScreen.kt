@@ -5,10 +5,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Close
+import androidx.compose.material.icons.rounded.Refresh
+import androidx.compose.material.icons.rounded.Translate
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Translate
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -21,7 +23,7 @@ import com.beardness.macosmsapp.screen.common.PermissionScreen
 import com.beardness.macosmsapp.screen.common.SmsPermissionScreen
 import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 import com.beardness.macosmsapp.ui.widget.smsbygrouplist.SmsByGroupListWidget
-import com.beardness.macosmsapp.ui.widget.toolbar.smsbygroup.ToolbarSmsByGroupWidget
+import com.beardness.macosmsapp.ui.widget.toolbar.TopAppBar
 
 @Composable
 fun SmsByGroup(
@@ -34,6 +36,13 @@ fun SmsByGroup(
 
     val sms by viewModel.sms.collectAsState(initial = emptyList())
     val internet by viewModel.internet.collectAsState(initial = true)
+
+    val toolbarIcon =
+        if (internet) {
+            Icons.Rounded.Translate
+        } else {
+            Icons.Rounded.Close
+        }
 
     val toolbarTitle =
         if (internet) {
@@ -53,9 +62,12 @@ fun SmsByGroup(
                     modifier = Modifier
                         .fillMaxSize()
                 ) {
-                    ToolbarSmsByGroupWidget(
+                    TopAppBar(
+                        navigationIcon = toolbarIcon,
+                        onNavigationClick = null,
                         title = toolbarTitle,
-                        onClickRefresh = { viewModel.refreshSmsList() }
+                        actionIcon = Icons.Rounded.Refresh,
+                        onActionClick = { viewModel.refreshSmsList() },
                     )
 
                     SmsByGroupListWidget(

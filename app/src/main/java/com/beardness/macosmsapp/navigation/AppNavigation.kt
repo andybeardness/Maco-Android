@@ -22,6 +22,10 @@ fun AppNavigation() {
 
     val navController = rememberNavController()
 
+    val navigateBack: () -> Unit = {
+        navController.navigateUp()
+    }
+
     val navigateToBodyTranslate: () -> Unit = {
         navController.navigate(
             route = Route.BodyTranslated.route,
@@ -59,7 +63,10 @@ fun AppNavigation() {
             val author = backStackEntry.arguments?.getString(argumentAuthor.name) ?: ""
             viewModel.setup(author = author)
 
-            SmsByAuthorScreen(viewModel = viewModel)
+            SmsByAuthorScreen(
+                viewModel = viewModel,
+                navigateBack = navigateBack,
+            )
         }
 
         composable(route = Route.BodyTranslated.route) {

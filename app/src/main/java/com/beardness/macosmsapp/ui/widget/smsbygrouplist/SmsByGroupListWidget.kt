@@ -7,7 +7,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.beardness.macosmsapp.extensions.ColorExtensions
 import com.beardness.macosmsapp.screen.smsbygroup.dto.GroupSmsViewDto
-import com.beardness.macosmsapp.ui.component.sms.group.SmsGroup
+import com.beardness.macosmsapp.ui.component.sms.group.SmsGroupComponent
 
 @Composable
 fun SmsByGroupListWidget(
@@ -22,7 +22,7 @@ fun SmsByGroupListWidget(
             sms.getOrNull(index = index)?.let { current ->
                 val avatarColor = ColorExtensions.avatarColor(token = current.author)
 
-                SmsGroup(
+                SmsGroupComponent(
                     avatarColor = avatarColor,
                     author = current.author,
                     body = current.body,

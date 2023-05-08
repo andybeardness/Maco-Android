@@ -3,24 +3,21 @@ package com.beardness.macosmsapp.ui.component.sms.group
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AlternateEmail
-import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
+import com.beardness.macosmsapp.ui.component.sms.AvatarComponent
 import com.beardness.macosmsapp.ui.component.spacer.SpacerV
 import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 import com.beardness.macosmsapp.ui.theme.shape.CustomShapes
 
 @Composable
-fun SmsGroup(
+fun SmsGroupComponent(
     avatarColor: Color,
     author: String,
     body: String,
@@ -37,21 +34,12 @@ fun SmsGroup(
                     end = Dimens.dp24,
                 ),
         ) {
-            Box(
+            AvatarComponent(
                 modifier = Modifier
                     .size(size = Dimens.dp40)
                     .clip(shape = CustomShapes.circle)
                     .background(color = avatarColor),
-                contentAlignment = Alignment.Center,
-            ) {
-                Icon(
-                    modifier = Modifier
-                        .size(size = Dimens.dp24),
-                    imageVector = Icons.Rounded.AlternateEmail,
-                    contentDescription = null,
-                    tint = Color.White.copy(alpha = .3f)
-                )
-            }
+            )
 
             SpacerV(dp = Dimens.dp16)
 
@@ -85,7 +73,7 @@ fun SmsGroup(
 @Preview
 @Composable
 fun PreviewSmsGroup() {
-    SmsGroup(
+    SmsGroupComponent(
         avatarColor = MaterialTheme.colorScheme.primary.copy(alpha = .3f),
         author = "Hambart",
         body = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
