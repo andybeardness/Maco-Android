@@ -4,6 +4,7 @@ import com.beardness.macosmsapp.di.qualifiers.QAutoTranslator
 import com.beardness.macosmsapp.di.qualifiers.QGeTranslator
 import com.beardness.macosmsapp.usecase.common.translator.BaseTranslatorProtocol
 import com.beardness.macosmsapp.usecase.flow.body.dto.BodyTranslatedDto
+import com.beardness.macosmsapp.usecase.flow.body.dto.TranslateState
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
@@ -16,8 +17,8 @@ class BodyTranslateUseCase @Inject constructor(
     private val _entered = MutableStateFlow<String>(value = "")
     override val entered: StateFlow<String> = _entered.asStateFlow()
 
-    private val _translated = MutableStateFlow<BodyTranslatedDto?>(value = null)
-    override val translated: StateFlow<BodyTranslatedDto?> = _translated.asStateFlow()
+    private val _translated = MutableStateFlow<TranslateState>(value = TranslateState.NoTranslate)
+    override val translated: StateFlow<TranslateState> = _translated.asStateFlow()
 
     private val _inProgress = MutableStateFlow<Boolean>(value = false)
     override val inProgress: StateFlow<Boolean> = _inProgress.asStateFlow()
@@ -45,7 +46,7 @@ class BodyTranslateUseCase @Inject constructor(
     }
 
     override suspend fun clearTranslate() {
-        _translated.emit(value = null)
+        _translated.emit(value = TranslateState.NoTranslate)
     }
 
     private suspend fun updateProgress(status: Boolean) {
@@ -57,9 +58,11 @@ class BodyTranslateUseCase @Inject constructor(
         translatedGe: String,
     ) {
         _translated.emit(
-            value = BodyTranslatedDto(
-                translatedAuto = translatedAuto,
-                translatedGe = translatedGe,
+            value = TranslateState.Translate(
+                translation = BodyTranslatedDto(
+                    translatedAuto = translatedAuto,
+                    translatedGe = translatedGe,
+                )
             )
         )
     }

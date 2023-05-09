@@ -26,7 +26,7 @@ import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 @Composable
 fun GifWidget(
     modifier: Modifier,
-    gifResId: Any?,
+    gifResId: Int?,
 ) {
     val waitingText = stringResource(id = R.string.waiting)
 

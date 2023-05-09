@@ -9,12 +9,14 @@ object MacoAnimations {
         FASTER(millis = 250),
     }
 
+    private val easing = EaseOutQuad
+
     fun <T> normal(
         delayMillis: Int = 0,
     ) = tween<T>(
         durationMillis = DURATION.NORMAL.millis,
-        easing = EaseOutQuad,
-        delayMillis = delayMillis
+        easing = easing,
+        delayMillis = delayMillis,
     )
 
     fun <T> faster(
@@ -22,6 +24,6 @@ object MacoAnimations {
     ) = tween<T>(
         durationMillis = DURATION.FASTER.millis,
         easing = EaseOutQuad,
-        delayMillis = delayMillis
+        delayMillis = delayMillis,
     )
 }

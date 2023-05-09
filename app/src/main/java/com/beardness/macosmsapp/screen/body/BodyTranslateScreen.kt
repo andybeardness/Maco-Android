@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import com.beardness.macosmsapp.R
+import com.beardness.macosmsapp.screen.body.dto.TranslateViewState
 import com.beardness.macosmsapp.ui.compose.widget.input.InputWidget
 import com.beardness.macosmsapp.ui.compose.widget.toolbar.ToolbarWidget
 import com.beardness.macosmsapp.ui.compose.widget.translate.TranslateWidget
@@ -46,16 +47,21 @@ fun BodyTranslateScreen(
         haptic()
     }
 
-    val translated by viewModel.translated.collectAsState(initial = null)
+    val translated by viewModel.translated.collectAsState(initial = TranslateViewState.Initial)
     val progress by viewModel.inProgress.collectAsState(initial = false)
     val internet by viewModel.internet.collectAsState(initial = false)
 
     val toolbarTitle = if (internet) toolbarText else noInternetText
 
-    val backspaceIcon = if (translated != null) Icons.Rounded.Delete else null
+    val backspaceIcon =
+        if (translated is TranslateViewState.Translate) {
+            Icons.Rounded.Delete
+        } else {
+            null
+        }
 
     val backspaceAction: (() -> Unit)? =
-        if (translated != null) {
+        if (translated is TranslateViewState.Translate) {
             { viewModel.clearTranslate() }
         } else {
             null
@@ -94,7 +100,7 @@ fun BodyTranslateScreen(
                 .fillMaxWidth()
                 .weight(weight = 1f)
                 .imePadding(),
-            translated = translated,
+            state = translated,
             onClickText = { text ->
                 copyTranslated(text)
                 haptic()

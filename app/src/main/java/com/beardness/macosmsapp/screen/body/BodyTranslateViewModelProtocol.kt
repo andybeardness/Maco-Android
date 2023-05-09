@@ -1,10 +1,10 @@
 package com.beardness.macosmsapp.screen.body
 
-import com.beardness.macosmsapp.screen.body.dto.BodyTranslatedViewDto
+import com.beardness.macosmsapp.screen.body.dto.TranslateViewState
 import kotlinx.coroutines.flow.Flow
 
 interface BodyTranslateViewModelProtocol {
-    val translated: Flow<BodyTranslatedViewDto?>
+    val translated: Flow<TranslateViewState>
     val inProgress: Flow<Boolean>
     val internet: Flow<Boolean>
 

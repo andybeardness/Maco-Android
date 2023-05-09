@@ -2,7 +2,8 @@ package com.beardness.macosmsapp.screen.body
 
 import androidx.lifecycle.ViewModel
 import com.beardness.macosmsapp.di.qualifiers.IoCoroutineScope
-import com.beardness.macosmsapp.screen.body.dto.BodyTranslatedViewDto
+import com.beardness.macosmsapp.screen.body.dto.TranslateViewState
+import com.beardness.macosmsapp.screen.body.dto.viewState
 import com.beardness.macosmsapp.usecase.clipboard.ClipboardUseCaseProtocol
 import com.beardness.macosmsapp.usecase.flow.body.BodyTranslateUseCaseProtocol
 import com.beardness.macosmsapp.usecase.flow.internet.InternetFlowProtocol
@@ -25,17 +26,10 @@ class BodyTranslateViewModel @Inject constructor(
     @IoCoroutineScope private val ioCoroutineScope: CoroutineScope,
 ) : ViewModel(), BodyTranslateViewModelProtocol {
 
-    override val translated: Flow<BodyTranslatedViewDto?> =
+    override val translated: Flow<TranslateViewState> =
         bodyTranslateUseCase
             .translated
-            .map { bodyTranslatedDto ->
-                bodyTranslatedDto ?: return@map null
-
-                BodyTranslatedViewDto(
-                    translatedAuto = bodyTranslatedDto.translatedAuto,
-                    translatedGe = bodyTranslatedDto.translatedGe,
-                )
-            }
+            .map { translateState -> translateState.viewState() }
 
     override val inProgress: Flow<Boolean> =
         bodyTranslateUseCase

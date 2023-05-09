@@ -12,7 +12,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.IntOffset
 import com.beardness.macosmsapp.R
-import com.beardness.macosmsapp.screen.body.dto.BodyTranslatedViewDto
+import com.beardness.macosmsapp.extensions.AnimatedNullVisibility
+import com.beardness.macosmsapp.screen.body.dto.TranslateViewState
 import com.beardness.macosmsapp.ui.compose.component.sms.TranslateComponent
 import com.beardness.macosmsapp.ui.compose.widget.gif.GifWidget
 import com.beardness.macosmsapp.ui.theme.animation.MacoAnimations
@@ -22,7 +23,7 @@ import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 @Composable
 fun TranslateWidget(
     modifier: Modifier,
-    translated: BodyTranslatedViewDto?,
+    state: TranslateViewState,
     onClickText: (text: String) -> Unit,
 ) {
     val translationAutoText = stringResource(id = R.string.translation_auto)
@@ -31,17 +32,37 @@ fun TranslateWidget(
     val animationSpecFloat = MacoAnimations.faster<Float>()
     val animationSpecIntOffset = MacoAnimations.faster<IntOffset>()
 
-    val visibility = translated != null
+    val animationSpecFloatDelayed = MacoAnimations.faster<Float>(delayMillis = MacoAnimations.DURATION.FASTER.millis)
 
-    val translatedAuto = translated?.translatedAuto ?: ""
-    val translatedGe = translated?.translatedGe ?: ""
+    val translateVisibility = state is TranslateViewState.Translate
+
+    val waitingResId =
+        when (state) {
+            TranslateViewState.Initial -> null
+            TranslateViewState.NoTranslate -> R.drawable.waiting
+            is TranslateViewState.Translate -> null
+        }
+
+    val translatedAuto =
+        if (state is TranslateViewState.Translate) {
+            state.translation.translatedAuto
+        } else {
+            ""
+        }
+
+    val translatedGe =
+        if (state is TranslateViewState.Translate) {
+            state.translation.translatedGe
+        } else {
+            ""
+        }
 
     Box(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
         AnimatedVisibility(
-            visible = visibility,
+            visible = translateVisibility,
             enter = fadeIn(
                 animationSpec = animationSpecFloat,
             ) + slideInHorizontally(
@@ -63,43 +84,46 @@ fun TranslateWidget(
                 TranslateComponent(
                     title = translationAutoText,
                     text = translatedAuto,
-                    onClickText = { onClickText(translationAutoText) },
+                    onClickText = { onClickText(translatedAuto) },
                 )
 
                 Spacer(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .padding(horizontal = Dimens.dp12)
                         .height(height = Dimens.dp1)
                         .background(
-                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = .3f)
+                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = .1f)
                         ),
                 )
 
                 TranslateComponent(
                     title = translationGeText,
                     text = translatedGe,
-                    onClickText = { onClickText(translationAutoText) },
+                    onClickText = { onClickText(translatedGe) },
                 )
             }
         }
 
-        AnimatedVisibility(
-            visible = !visibility,
+        AnimatedNullVisibility(
+            nullable = waitingResId,
             enter = fadeIn(
-                animationSpec = animationSpecFloat
+                animationSpec = animationSpecFloatDelayed,
             ) + scaleIn(
-                animationSpec = animationSpecFloat,
+                animationSpec = animationSpecFloatDelayed,
+                initialScale = .2f
             ),
             exit = fadeOut(
                 animationSpec = animationSpecFloat,
             ) + scaleOut(
                 animationSpec = animationSpecFloat,
+                targetScale = .2f
             ),
-        ) {
+        ) { resId ->
             GifWidget(
                 modifier = Modifier
                     .size(size = Dimens.dp64x3),
-                gifResId = R.drawable.waiting,
+                gifResId = resId,
             )
         }
     }

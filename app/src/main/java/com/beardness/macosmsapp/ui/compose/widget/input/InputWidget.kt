@@ -38,7 +38,7 @@ fun InputWidget(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = Dimens.dp16)
+                .padding(vertical = Dimens.dp4, horizontal = Dimens.dp16)
                 .heightIn(min = Dimens.dp64, max = Dp.Infinity),
             verticalAlignment = Alignment.Top,
         ) {
