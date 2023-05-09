@@ -14,7 +14,6 @@ import com.beardness.macosmsapp.usecase.flow.smstranslates.dto.SmsTranslateDto
 import com.beardness.macosmsapp.usecase.usecase.translatesms.TranslateSmsUseCaseProtocol
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject

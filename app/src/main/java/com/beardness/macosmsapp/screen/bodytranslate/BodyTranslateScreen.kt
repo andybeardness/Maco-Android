@@ -23,7 +23,7 @@ import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 @Composable
 fun BodyTranslateScreen(
     viewModel: BodyTranslateViewModelProtocol,
-    initialInput: String = "",
+    initial: String,
 ) {
     val inputHereText = stringResource(id = R.string.input_text)
     val translateText = stringResource(id = R.string.translate)
@@ -32,7 +32,7 @@ fun BodyTranslateScreen(
 
     val focusManager = LocalFocusManager.current
 
-    var input by remember { mutableStateOf(initialInput) }
+    var input by remember { mutableStateOf(initial) }
 
     val onInputChanged: (new: String) -> Unit = { new ->
         input = new

@@ -1,4 +1,4 @@
-package com.beardness.macosmsapp.ui.compose.sms
+package com.beardness.macosmsapp.ui.compose.avatar
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

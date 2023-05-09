@@ -3,7 +3,6 @@ package com.beardness.macosmsapp.source.repo.sms
 import android.content.Context
 import android.database.Cursor
 import android.provider.Telephony
-import android.util.Log
 import com.beardness.macosmsapp.source.repo.sms.dto.SmsRepoDto
 import javax.inject.Inject
 
@@ -57,11 +56,8 @@ class SmsRepo @Inject constructor(
                 }
             }
 
-            Log.d("BUGBUGBUG", "smsFromDevice :: smsFromDevice = $smsFromDevice")
-
             smsFromDevice
         } catch (t: Throwable) {
-            Log.d("BUGBUGBUG", "smsFromDevice :: t = $t")
             emptyList()
         }
 

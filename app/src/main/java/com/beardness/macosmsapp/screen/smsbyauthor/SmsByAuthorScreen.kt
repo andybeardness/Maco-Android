@@ -1,5 +1,6 @@
 package com.beardness.macosmsapp.screen.smsbyauthor
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.icons.Icons
@@ -10,7 +11,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.beardness.macosmsapp.extensions.ColorExtensions
-import com.beardness.macosmsapp.ui.compose.sms.AvatarComponent
+import com.beardness.macosmsapp.ui.compose.avatar.AvatarComponent
 import com.beardness.macosmsapp.ui.widget.smstranslateslist.SmsTranslatesListWidget
 import com.beardness.macosmsapp.ui.widget.toolbar.TopAppBar
 import com.beardness.macosmsapp.ui.widget.toolbar.TopAppBarIcon
@@ -46,6 +47,7 @@ fun SmsByAuthorScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(color = MaterialTheme.colorScheme.background)
     ) {
         TopAppBar(
             title = author,

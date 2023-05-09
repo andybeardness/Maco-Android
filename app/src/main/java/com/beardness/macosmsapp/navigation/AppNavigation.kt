@@ -1,24 +1,28 @@
 package com.beardness.macosmsapp.navigation
 
-import androidx.compose.animation.ExperimentalAnimationApi
+import android.Manifest
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
+import com.beardness.macosmsapp.navigation.sms.NavHostSms
+import com.beardness.macosmsapp.navigation.sms.NavHostSmsController
+import com.beardness.macosmsapp.navigation.sms.NavHostSmsControllerProtocol
 import com.beardness.macosmsapp.screen.bodytranslate.BodyTranslateScreen
 import com.beardness.macosmsapp.screen.bodytranslate.BodyTranslateViewModel
-import com.beardness.macosmsapp.screen.bodytranslate.BodyTranslateViewModelProtocol
+import com.beardness.macosmsapp.screen.common.PermissionScreen
+import com.beardness.macosmsapp.screen.common.SmsPermissionScreen
 import com.beardness.macosmsapp.screen.smsbyauthor.SmsByAuthorScreen
 import com.beardness.macosmsapp.screen.smsbyauthor.SmsByAuthorScreenViewModel
 import com.beardness.macosmsapp.screen.smsbygroup.SmsByGroup
 import com.beardness.macosmsapp.screen.smsbygroup.SmsByGroupScreenViewModel
+import kotlinx.coroutines.launch
 
-@ExperimentalAnimationApi
 @Composable
 fun AppNavigation() {
+    val scope = rememberCoroutineScope()
 
     val navController = rememberNavController()
 
@@ -26,56 +30,85 @@ fun AppNavigation() {
         navController.navigateUp()
     }
 
+    val navigateHome: () -> Unit = {
+        navController.navigate(
+            route = Route.Home.route,
+        )
+    }
+
     val navigateToBodyTranslate: () -> Unit = {
         navController.navigate(
-            route = Route.BodyTranslated.route,
+            route = Route.Body.route,
         )
     }
-
-    val navigateToSmsByAuthor: (author: String) -> Unit = { author ->
-        navController.navigate(
-            route = Route.SmsByAuthor(author = author).route,
-        )
-    }
-
-    val argumentAuthor = navArgument(name = "author") { type = NavType.StringType }
 
     NavHost(
         navController = navController,
-        startDestination = Route.SmsGroups.route,
+        startDestination = Route.Permissions.route,
     ) {
-
-        composable(route = Route.SmsGroups.route) {
-            val viewModel = hiltViewModel<SmsByGroupScreenViewModel>()
-
-            SmsByGroup(
-                viewModel = viewModel,
-                navigateToBodyTranslate = navigateToBodyTranslate,
-                navigateToSmsByAuthor = navigateToSmsByAuthor,
+        composable(
+            route = Route.Permissions.route,
+        ) {
+            PermissionScreen(
+                permission = Manifest.permission.READ_SMS,
+                granted = { },
+                denied = { request ->
+                    SmsPermissionScreen(
+                        onClick = { request() },
+                    )
+                },
+                whenGranted = navigateHome,
             )
         }
 
         composable(
-            route = Route.SmsByAuthor().route,
-            arguments = listOf(argumentAuthor),
-        ) { backStackEntry ->
-            val viewModel = hiltViewModel<SmsByAuthorScreenViewModel>()
-            val author = backStackEntry.arguments?.getString(argumentAuthor.name) ?: ""
-            viewModel.setup(author = author)
+            route = Route.Home.route,
+        ) {
+            val smsGroupViewModel = hiltViewModel<SmsByGroupScreenViewModel>()
+            val smsByAuthorViewModel = hiltViewModel<SmsByAuthorScreenViewModel>()
 
-            SmsByAuthorScreen(
-                viewModel = viewModel,
-                navigateBack = navigateBack,
+            val navHostSmsController: NavHostSmsControllerProtocol =
+                NavHostSmsController()
+
+            val navigateToAuthorScreen: (author: String) -> Unit = { author ->
+                scope.launch {
+                    navHostSmsController.slide(state = true)
+                }
+
+                smsByAuthorViewModel.setup(author = author)
+            }
+
+            val navigateOutAuthorScreen: () -> Unit = {
+                scope.launch {
+                    navHostSmsController.slide(state = false)
+                }
+            }
+
+            NavHostSms(
+                controller = navHostSmsController,
+                mainScreen = {
+                    SmsByGroup(
+                        viewModel = smsGroupViewModel,
+                        navigateToBodyTranslate = navigateToBodyTranslate,
+                        navigateToAuthorScreen = navigateToAuthorScreen,
+                    )
+                },
+                slideScreen = {
+                    SmsByAuthorScreen(
+                        viewModel = smsByAuthorViewModel,
+                        navigateBack = navigateOutAuthorScreen,
+                    )
+                },
             )
         }
 
-        composable(route = Route.BodyTranslated.route) {
+        composable(route = Route.Body.route) {
             val viewModel = hiltViewModel<BodyTranslateViewModel>()
-            val initialInput = viewModel.input()
+            val initial = viewModel.input()
 
             BodyTranslateScreen(
                 viewModel = viewModel,
-                initialInput = initialInput,
+                initial = initial,
             )
         }
     }

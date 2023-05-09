@@ -1,6 +1,5 @@
 package com.beardness.macosmsapp.source.repo.smscache
 
-import android.util.Log
 import com.beardness.macosmsapp.db.smscache.SmsCacheDao
 import com.beardness.macosmsapp.db.smscache.dbEntity
 import com.beardness.macosmsapp.source.repo.sms.SmsRepoProtocol
@@ -30,8 +29,6 @@ class SmsCacheProxyRepo @Inject constructor(
                 .all()
                 .map { smsCacheDbEntity -> smsCacheDbEntity.proxyRepoDto() }
 
-        Log.d("BUGBUGBUG", "smsCacheFromDb = $smsCacheFromDb")
-
         _flow.emit(value = smsCacheFromDb)
     }
 
@@ -40,8 +37,6 @@ class SmsCacheProxyRepo @Inject constructor(
             smsRepo
                 .smsFromDevice()
                 .map { smsRepoDto -> smsRepoDto.dbEntity() }
-
-        Log.d("BUGBUGBUG", "smsFromDevice = $smsFromDevice")
 
         smsCacheDao.clearAll()
         smsCacheDao.addAll(elements = smsFromDevice)

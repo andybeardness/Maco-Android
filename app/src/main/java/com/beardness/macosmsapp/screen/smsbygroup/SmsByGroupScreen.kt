@@ -22,6 +22,7 @@ import androidx.compose.ui.res.stringResource
 import com.beardness.macosmsapp.R
 import com.beardness.macosmsapp.screen.common.PermissionScreen
 import com.beardness.macosmsapp.screen.common.SmsPermissionScreen
+import com.beardness.macosmsapp.ui.compose.fab.Fab
 import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 import com.beardness.macosmsapp.ui.widget.smsbygrouplist.SmsByGroupListWidget
 import com.beardness.macosmsapp.ui.widget.toolbar.TopAppBar
@@ -30,7 +31,7 @@ import com.beardness.macosmsapp.ui.widget.toolbar.TopAppBar
 fun SmsByGroup(
     viewModel: SmsByGroupScreenViewModelProtocol,
     navigateToBodyTranslate: () -> Unit,
-    navigateToSmsByAuthor: (author: String) -> Unit,
+    navigateToAuthorScreen: (author: String) -> Unit,
 ) {
     val mainToolbarText = stringResource(id = R.string.main_toolbar_text)
     val noInternetToolbarText = stringResource(id = R.string.main_toolbar_text_no_connection)
@@ -73,9 +74,16 @@ fun SmsByGroup(
 
                     SmsByGroupListWidget(
                         sms = sms,
-                        onClickAuthor = navigateToSmsByAuthor
+                        onClickAuthor = navigateToAuthorScreen
                     )
                 }
+
+                Fab(
+                    modifier = Modifier
+                        .align(alignment = Alignment.BottomEnd)
+                        .padding(all = Dimens.dp32),
+                    action = navigateToBodyTranslate,
+                )
 
                 FloatingActionButton(
                     modifier = Modifier

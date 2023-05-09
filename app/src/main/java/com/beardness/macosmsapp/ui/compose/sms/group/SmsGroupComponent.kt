@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import com.beardness.macosmsapp.ui.compose.sms.AvatarComponent
+import com.beardness.macosmsapp.ui.compose.avatar.AvatarComponent
 import com.beardness.macosmsapp.ui.compose.spacer.SpacerColumn
 import com.beardness.macosmsapp.ui.compose.spacer.SpacerRow
 import com.beardness.macosmsapp.ui.theme.dimen.Dimens
