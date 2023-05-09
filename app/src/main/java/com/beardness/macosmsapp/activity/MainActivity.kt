@@ -3,10 +3,9 @@ package com.beardness.macosmsapp.activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.beardness.macosmsapp.navigation.AppNavigation
@@ -22,6 +21,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun compose() {
+
         setContent {
             MacoSMSAppTheme {
                 Surface(
@@ -35,7 +35,6 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    @OptIn(ExperimentalAnimationApi::class)
     private fun NavigationGraph() {
         AppNavigation()
     }

@@ -4,6 +4,7 @@ import com.beardness.macosmsapp.di.qualifiers.QAutoTranslator
 import com.beardness.macosmsapp.di.qualifiers.QGeTranslator
 import com.beardness.macosmsapp.usecase.common.translator.BaseTranslatorProtocol
 import com.beardness.macosmsapp.usecase.flow.body.dto.BodyTranslatedDto
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
@@ -26,17 +27,25 @@ class BodyTranslateUseCase @Inject constructor(
     }
 
     override suspend fun translate(text: String) {
+        text.ifBlank { return }
+
         updateProgress(status = true)
 
-        val translatedAuto = autoTranslator.translate(text = text) ?: ""
-        val translatedGe = geTranslator.translate(text = text) ?: ""
+        val currentScope = CoroutineScope(context = Dispatchers.Default)
+
+        val translatedAuto = currentScope.async { autoTranslator.translate(text = text) ?: "" }
+        val translatedGe = currentScope.async { geTranslator.translate(text = text) ?: "" }
 
         updateTranslate(
-            translatedAuto = translatedAuto,
-            translatedGe = translatedGe,
+            translatedAuto = translatedAuto.await(),
+            translatedGe = translatedGe.await(),
         )
 
         updateProgress(status = false)
+    }
+
+    override suspend fun clearTranslate() {
+        _translated.emit(value = null)
     }
 
     private suspend fun updateProgress(status: Boolean) {

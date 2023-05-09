@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name" translatable="false">Maco SMS</string>
 
-    <string name="input_text">Input text here</string>
+    <string name="input_text">Enter your input</string>
     <string name="translate">Translate 🌍 🇬🇪</string>
     <string name="translation_auto">🌍 Auto translate</string>
     <string name="translation_ge">🇬🇪 Georgia</string>
     <string name="sms_permission">Need to accept SMS permission</string>
     <string name="request">Request</string>
     <string name="main_toolbar_text" translatable="false">Maco SMS</string>
-    <string name="main_toolbar_text_no_connection">No internet</string>
+    <string name="no_connection">No internet</string>
+    <string name="body_toolbar_text">Custom input</string>
 </resources>

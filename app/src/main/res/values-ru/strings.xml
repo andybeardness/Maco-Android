@@ -3,7 +3,8 @@
     <string name="translate">Перевести 🌍 🇬🇪</string>
     <string name="sms_permission">Нужно разрешение на чтение СМС</string>
     <string name="request">Запросить</string>
-    <string name="main_toolbar_text_no_connection">Нет интернета</string>
+    <string name="no_connection">Нет интернета</string>
     <string name="translation_auto">🌍 Авто перевод</string>
     <string name="translation_ge">🇬🇪 Грузинский транслит</string>
+    <string name="body_toolbar_text">Особый текст</string>
 </resources>

@@ -12,6 +12,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
+import com.beardness.macosmsapp.ui.theme.animation.MacoAnimations
 import com.beardness.macosmsapp.ui.theme.dimen.Dimens
 import kotlinx.coroutines.launch
 
@@ -31,10 +32,7 @@ fun NavHostSms(
 
     val y by animateDpAsState(
         targetValue = if (slide) Dimens.dp0 else screenHeight,
-        animationSpec = tween(
-            durationMillis = 350,
-            easing = EaseInOutCirc,
-        )
+        animationSpec = MacoAnimations.normal()
     )
 
     BackHandler(
@@ -53,12 +51,16 @@ fun NavHostSms(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-        ) { mainScreen() }
+        ) {
+            mainScreen()
+        }
 
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .offset(y = y)
-        ) { slideScreen() }
+        ) {
+            slideScreen()
+        }
     }
 }

@@ -1,114 +1,138 @@
 package com.beardness.macosmsapp.navigation
 
 import android.Manifest
+import androidx.compose.animation.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
 import com.beardness.macosmsapp.navigation.sms.NavHostSms
 import com.beardness.macosmsapp.navigation.sms.NavHostSmsController
 import com.beardness.macosmsapp.navigation.sms.NavHostSmsControllerProtocol
-import com.beardness.macosmsapp.screen.bodytranslate.BodyTranslateScreen
-import com.beardness.macosmsapp.screen.bodytranslate.BodyTranslateViewModel
-import com.beardness.macosmsapp.screen.common.PermissionScreen
-import com.beardness.macosmsapp.screen.common.SmsPermissionScreen
-import com.beardness.macosmsapp.screen.smsbyauthor.SmsByAuthorScreen
-import com.beardness.macosmsapp.screen.smsbyauthor.SmsByAuthorScreenViewModel
-import com.beardness.macosmsapp.screen.smsbygroup.SmsByGroup
-import com.beardness.macosmsapp.screen.smsbygroup.SmsByGroupScreenViewModel
+import com.beardness.macosmsapp.screen.body.BodyTranslateScreen
+import com.beardness.macosmsapp.screen.body.BodyTranslateViewModel
+import com.beardness.macosmsapp.screen.permission.Permission
+import com.beardness.macosmsapp.screen.permission.sms.SmsPermissionScreen
+import com.beardness.macosmsapp.screen.permission.sms.SmsPermissionScreenViewModel
+import com.beardness.macosmsapp.screen.smsauthor.SmsByAuthorScreen
+import com.beardness.macosmsapp.screen.smsauthor.SmsAuthorScreenViewModel
+import com.beardness.macosmsapp.screen.smsgroup.SmsGroupScreen
+import com.beardness.macosmsapp.screen.smsgroup.SmsGroupScreenViewModel
+import com.beardness.macosmsapp.ui.theme.animation.MacoAnimations
+import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.google.accompanist.navigation.animation.composable
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AppNavigation() {
     val scope = rememberCoroutineScope()
 
-    val navController = rememberNavController()
+    val navController = rememberAnimatedNavController()
 
     val navigateBack: () -> Unit = {
         navController.navigateUp()
     }
 
-    val navigateHome: () -> Unit = {
-        navController.navigate(
-            route = Route.Home.route,
-        )
-    }
-
-    val navigateToBodyTranslate: () -> Unit = {
+    val navigateToBodyScreen: () -> Unit = {
         navController.navigate(
             route = Route.Body.route,
         )
     }
 
-    NavHost(
+    AnimatedNavHost(
         navController = navController,
-        startDestination = Route.Permissions.route,
+        startDestination = Route.Home.route,
     ) {
         composable(
-            route = Route.Permissions.route,
-        ) {
-            PermissionScreen(
-                permission = Manifest.permission.READ_SMS,
-                granted = { },
-                denied = { request ->
-                    SmsPermissionScreen(
-                        onClick = { request() },
-                    )
-                },
-                whenGranted = navigateHome,
-            )
-        }
-
-        composable(
             route = Route.Home.route,
+            enterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { offset -> - offset },
+                    animationSpec = MacoAnimations.normal(),
+                )
+            },
+            exitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { offset -> - offset },
+                    animationSpec = MacoAnimations.normal(),
+                )
+            },
         ) {
-            val smsGroupViewModel = hiltViewModel<SmsByGroupScreenViewModel>()
-            val smsByAuthorViewModel = hiltViewModel<SmsByAuthorScreenViewModel>()
-
             val navHostSmsController: NavHostSmsControllerProtocol =
                 NavHostSmsController()
 
-            val navigateToAuthorScreen: (author: String) -> Unit = { author ->
-                scope.launch {
-                    navHostSmsController.slide(state = true)
-                }
+            Permission(
+                permission = Manifest.permission.READ_SMS,
+                granted = {
+                    val smsGroupViewModel = hiltViewModel<SmsGroupScreenViewModel>()
+                    val smsByAuthorViewModel = hiltViewModel<SmsAuthorScreenViewModel>()
 
-                smsByAuthorViewModel.setup(author = author)
-            }
+                    val navigateToAuthorScreen: (author: String) -> Unit = { author ->
+                        scope.launch {
+                            navHostSmsController.slide(state = true)
+                        }
 
-            val navigateOutAuthorScreen: () -> Unit = {
-                scope.launch {
-                    navHostSmsController.slide(state = false)
-                }
-            }
+                        smsByAuthorViewModel.setup(author = author)
+                    }
 
-            NavHostSms(
-                controller = navHostSmsController,
-                mainScreen = {
-                    SmsByGroup(
-                        viewModel = smsGroupViewModel,
-                        navigateToBodyTranslate = navigateToBodyTranslate,
-                        navigateToAuthorScreen = navigateToAuthorScreen,
+                    val navigateOutAuthorScreen: () -> Unit = {
+                        scope.launch {
+                            navHostSmsController.slide(state = false)
+                        }
+                    }
+
+                    NavHostSms(
+                        controller = navHostSmsController,
+                        mainScreen = {
+                            SmsGroupScreen(
+                                viewModel = smsGroupViewModel,
+                                navigateToBodyTranslate = navigateToBodyScreen,
+                                navigateToAuthorScreen = navigateToAuthorScreen,
+                            )
+                        },
+                        slideScreen = {
+                            SmsByAuthorScreen(
+                                viewModel = smsByAuthorViewModel,
+                                navigateBack = navigateOutAuthorScreen,
+                            )
+                        },
                     )
                 },
-                slideScreen = {
-                    SmsByAuthorScreen(
-                        viewModel = smsByAuthorViewModel,
-                        navigateBack = navigateOutAuthorScreen,
+                denied = { request ->
+                    val smsPermissionScreenViewModel = hiltViewModel<SmsPermissionScreenViewModel>()
+
+                    SmsPermissionScreen(
+                        viewModel = smsPermissionScreenViewModel,
+                        permissionDialog = request,
                     )
-                },
+                }
             )
+
         }
 
-        composable(route = Route.Body.route) {
+        composable(
+            route = Route.Body.route,
+            enterTransition = {
+                slideInHorizontally(
+                    initialOffsetX = { offset -> offset },
+                    animationSpec = MacoAnimations.normal(),
+                )
+            },
+            exitTransition = {
+                slideOutHorizontally(
+                    targetOffsetX = { offset -> offset },
+                    animationSpec = MacoAnimations.normal(),
+                )
+            },
+        ) {
             val viewModel = hiltViewModel<BodyTranslateViewModel>()
             val initial = viewModel.input()
 
             BodyTranslateScreen(
                 viewModel = viewModel,
                 initial = initial,
+                navigateBack = navigateBack,
             )
         }
     }

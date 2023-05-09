@@ -10,4 +10,5 @@ interface BodyTranslateUseCaseProtocol {
 
     suspend fun updateEntered(text: String)
     suspend fun translate(text: String)
+    suspend fun clearTranslate()
 }
