@@ -20,6 +20,7 @@ object Dimens {
     val dp56 = 56.dp
     val dp64 = 64.dp
     val dp96 = 96.dp
-    val dp64x2 = 128.dp
-    val dp64x4 = 256.dp
+    val dp64x2 = 64.dp * 2
+    val dp64x3 = 64.dp * 3
+    val dp64x4 = 64.dp * 4
 }
