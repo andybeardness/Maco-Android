@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.beardness.macosmsapp.extensions.clickableIfNotNull
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun SmsBodyComponent(
@@ -24,13 +24,13 @@ fun SmsBodyComponent(
         modifier = Modifier
             .fillMaxWidth()
             .clickableIfNotNull(onClick = onClick)
-            .padding(all = Dimens.dp12),
+            .padding(all = MacoDimens.dp12),
         contentAlignment = Alignment.BottomEnd,
     ) {
         Text(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(end = Dimens.dp32),
+                .padding(end = MacoDimens.dp32),
             text = body,
             style = MaterialTheme.typography.bodyMedium,
             color = contentColor,

@@ -21,7 +21,6 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun compose() {
-
         setContent {
             MacoSMSAppTheme {
                 Surface(

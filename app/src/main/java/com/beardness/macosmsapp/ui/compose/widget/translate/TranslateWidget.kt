@@ -16,8 +16,8 @@ import com.beardness.macosmsapp.extensions.AnimatedNullVisibility
 import com.beardness.macosmsapp.screen.body.dto.TranslateViewState
 import com.beardness.macosmsapp.ui.compose.component.sms.TranslateComponent
 import com.beardness.macosmsapp.ui.compose.widget.gif.GifWidget
-import com.beardness.macosmsapp.ui.theme.animation.MacoAnimations
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoAnimations
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -28,11 +28,6 @@ fun TranslateWidget(
 ) {
     val translationAutoText = stringResource(id = R.string.translation_auto)
     val translationGeText = stringResource(id = R.string.translation_ge)
-
-    val animationSpecFloat = MacoAnimations.faster<Float>()
-    val animationSpecIntOffset = MacoAnimations.faster<IntOffset>()
-
-    val animationSpecFloatDelayed = MacoAnimations.faster<Float>(delayMillis = MacoAnimations.DURATION.FASTER.millis)
 
     val translateVisibility = state is TranslateViewState.Translate
 
@@ -63,18 +58,8 @@ fun TranslateWidget(
     ) {
         AnimatedVisibility(
             visible = translateVisibility,
-            enter = fadeIn(
-                animationSpec = animationSpecFloat,
-            ) + slideInHorizontally(
-                animationSpec = animationSpecIntOffset,
-                initialOffsetX = { x -> - x / 2 }
-            ),
-            exit = fadeOut(
-                animationSpec = animationSpecFloat,
-            ) + slideOutHorizontally(
-                animationSpec = animationSpecIntOffset,
-                targetOffsetX = { x -> x / 2 }
-            ),
+            enter = fadeIn(animationSpec = MacoAnimations.faster()),
+            exit = fadeOut(animationSpec = MacoAnimations.faster()),
         ) {
             Column(
                 modifier = Modifier
@@ -90,8 +75,8 @@ fun TranslateWidget(
                 Spacer(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = Dimens.dp12)
-                        .height(height = Dimens.dp1)
+                        .padding(horizontal = MacoDimens.dp12)
+                        .height(height = MacoDimens.dp1)
                         .background(
                             color = MaterialTheme.colorScheme.onBackground.copy(alpha = .1f)
                         ),
@@ -108,21 +93,25 @@ fun TranslateWidget(
         AnimatedNullVisibility(
             nullable = waitingResId,
             enter = fadeIn(
-                animationSpec = animationSpecFloatDelayed,
+                animationSpec = MacoAnimations.faster(
+                    delayMillis = MacoAnimations.DURATION.FASTER.millis,
+                ),
             ) + scaleIn(
-                animationSpec = animationSpecFloatDelayed,
-                initialScale = .2f
+                animationSpec = MacoAnimations.faster(
+                    delayMillis = MacoAnimations.DURATION.FASTER.millis,
+                ),
+                initialScale = .2f,
             ),
             exit = fadeOut(
-                animationSpec = animationSpecFloat,
+                animationSpec = MacoAnimations.faster(),
             ) + scaleOut(
-                animationSpec = animationSpecFloat,
+                animationSpec = MacoAnimations.faster(),
                 targetScale = .2f
             ),
         ) { resId ->
             GifWidget(
                 modifier = Modifier
-                    .size(size = Dimens.dp64x3),
+                    .size(size = MacoDimens.dp64x3),
                 gifResId = resId,
             )
         }

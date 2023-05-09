@@ -17,7 +17,7 @@ import com.beardness.macosmsapp.screen.smsauthor.SmsByAuthorScreen
 import com.beardness.macosmsapp.screen.smsauthor.SmsAuthorScreenViewModel
 import com.beardness.macosmsapp.screen.smsgroup.SmsGroupScreen
 import com.beardness.macosmsapp.screen.smsgroup.SmsGroupScreenViewModel
-import com.beardness.macosmsapp.ui.theme.animation.MacoAnimations
+import com.beardness.macosmsapp.ui.theme.additional.MacoAnimations
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController

@@ -11,8 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import com.beardness.macosmsapp.R
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
-import com.beardness.macosmsapp.ui.theme.shape.CustomShapes
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun SmsPermissionScreen(
@@ -42,17 +41,17 @@ fun SmsPermissionScreen(
             Spacer(
                 modifier = Modifier
                     .height(
-                        height = Dimens.dp16,
+                        height = MacoDimens.dp16,
                     ),
             )
 
             Box(
                 modifier = Modifier
-                    .clip(shape = CustomShapes.circle)
+                    .clip(shape = MaterialTheme.shapes.extraSmall)
                     .background(color = MaterialTheme.colorScheme.primary)
                     .padding(
-                        horizontal = Dimens.dp32,
-                        vertical = Dimens.dp16,
+                        horizontal = MacoDimens.dp32,
+                        vertical = MacoDimens.dp16,
                     )
                     .clickable {
                         permissionDialog()

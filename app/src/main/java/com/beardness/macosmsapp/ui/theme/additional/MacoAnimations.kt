@@ -1,4 +1,4 @@
-package com.beardness.macosmsapp.ui.theme.animation
+package com.beardness.macosmsapp.ui.theme.additional
 
 import androidx.compose.animation.core.EaseOutQuad
 import androidx.compose.animation.core.tween
@@ -6,7 +6,7 @@ import androidx.compose.animation.core.tween
 object MacoAnimations {
     enum class DURATION(val millis: Int) {
         NORMAL(millis = 350),
-        FASTER(millis = 250),
+        FASTER(millis = 300),
     }
 
     private val easing = EaseOutQuad

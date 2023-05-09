@@ -1,6 +1,5 @@
 package com.beardness.macosmsapp.ui.compose.component.textinput
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,8 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardCapitalization
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
-import com.beardness.macosmsapp.ui.theme.shape.CustomShapes
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun LoadingInputComponent(
@@ -33,12 +31,12 @@ fun LoadingInputComponent(
     Box(
         modifier = modifier
             .height(intrinsicSize = IntrinsicSize.Min)
-            .clip(shape = RoundedCornerShape(size = Dimens.dp16)),
+            .clip(shape = RoundedCornerShape(size = MacoDimens.dp16)),
     ) {
         TextField(
             modifier = Modifier
                 .fillMaxWidth()
-                .heightIn(min = Dimens.dp56, max = Dimens.dp64x2),
+                .heightIn(min = MacoDimens.dp56, max = MacoDimens.dp64x2),
             value = input,
             onValueChange = onInputChanged,
             shape = RectangleShape,
@@ -59,8 +57,8 @@ fun LoadingInputComponent(
             trailingIcon = {
                 Icon(
                     modifier = Modifier
-                        .size(size = Dimens.dp24)
-                        .clip(shape = CustomShapes.circle)
+                        .size(size = MacoDimens.dp24)
+                        .clip(shape = MaterialTheme.shapes.extraSmall)
                         .clickable(onClick = clearInput),
                     imageVector = Icons.Rounded.Close,
                     contentDescription = null,
@@ -70,7 +68,7 @@ fun LoadingInputComponent(
             leadingIcon = {
                 Icon(
                     modifier = Modifier
-                        .size(size = Dimens.dp24),
+                        .size(size = MacoDimens.dp24),
                     imageVector = Icons.Rounded.Keyboard,
                     contentDescription = null,
                     tint = MaterialTheme.colorScheme.onBackground,

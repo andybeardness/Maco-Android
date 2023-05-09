@@ -1,8 +1,8 @@
-package com.beardness.macosmsapp.ui.theme.dimen
+package com.beardness.macosmsapp.ui.theme.additional
 
 import androidx.compose.ui.unit.dp
 
-object Dimens {
+object MacoDimens {
     val dp0 = 0.dp
     val dp1 = 1.dp
     val dp2 = 2.dp

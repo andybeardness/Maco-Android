@@ -15,7 +15,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.beardness.macosmsapp.screen.smsauthor.dto.SmsAuthorViewDto
 import com.beardness.macosmsapp.screen.smsauthor.dto.exist
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun SmsCardComponent(
@@ -54,14 +54,14 @@ fun SmsCardComponent(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = Dimens.dp16),
+            .padding(horizontal = MacoDimens.dp16),
         shape = MaterialTheme.shapes.medium,
         colors = CardDefaults.cardColors(
             containerColor = MaterialTheme.colorScheme.surface,
             contentColor = MaterialTheme.colorScheme.onSurface,
         ),
         border = BorderStroke(
-            width = Dimens.dp1,
+            width = MacoDimens.dp1,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = .1f),
         ),
     ) {

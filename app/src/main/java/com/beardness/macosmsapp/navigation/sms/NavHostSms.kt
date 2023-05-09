@@ -12,8 +12,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
-import com.beardness.macosmsapp.ui.theme.animation.MacoAnimations
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoAnimations
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 import kotlinx.coroutines.launch
 
 @Composable
@@ -31,7 +31,7 @@ fun NavHostSms(
     val slide by controller.slide.collectAsState()
 
     val y by animateDpAsState(
-        targetValue = if (slide) Dimens.dp0 else screenHeight,
+        targetValue = if (slide) MacoDimens.dp0 else screenHeight,
         animationSpec = MacoAnimations.normal()
     )
 

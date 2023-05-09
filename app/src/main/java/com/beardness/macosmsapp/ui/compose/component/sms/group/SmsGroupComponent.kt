@@ -13,7 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.beardness.macosmsapp.ui.compose.component.avatar.AvatarComponent
 import com.beardness.macosmsapp.ui.compose.component.spacer.SpacerColumn
 import com.beardness.macosmsapp.ui.compose.component.spacer.SpacerRow
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun SmsGroupComponent(
@@ -25,17 +25,17 @@ fun SmsGroupComponent(
     Column {
         Row(
             modifier = Modifier
-                .clickable { onClick() }
+                .clickable(onClick = onClick)
                 .padding(
-                    top = Dimens.dp12,
-                    bottom = Dimens.dp12,
-                    start = Dimens.dp16,
-                    end = Dimens.dp24,
+                    top = MacoDimens.dp12,
+                    bottom = MacoDimens.dp12,
+                    start = MacoDimens.dp16,
+                    end = MacoDimens.dp24,
                 ),
         ) {
             AvatarComponent(color = avatarColor)
 
-            SpacerRow(dp = Dimens.dp16)
+            SpacerRow(dp = MacoDimens.dp16)
 
             Column(
                 modifier = Modifier
@@ -46,7 +46,7 @@ fun SmsGroupComponent(
                     style = MaterialTheme.typography.headlineMedium,
                 )
                 
-                SpacerColumn(dp = Dimens.dp4)
+                SpacerColumn(dp = MacoDimens.dp4)
                 
                 Text(
                     text = body,
@@ -60,8 +60,8 @@ fun SmsGroupComponent(
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = Dimens.dp16)
-                .height(height = Dimens.dp1)
+                .padding(horizontal = MacoDimens.dp16)
+                .height(height = MacoDimens.dp1)
                 .background(color = MaterialTheme.colorScheme.onBackground.copy(alpha = .1f)),
         )
     }

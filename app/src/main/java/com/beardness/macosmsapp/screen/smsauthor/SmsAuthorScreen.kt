@@ -14,7 +14,7 @@ import com.beardness.macosmsapp.extensions.ColorExtensions
 import com.beardness.macosmsapp.ui.compose.component.avatar.AvatarComponent
 import com.beardness.macosmsapp.ui.compose.widget.smstranslateslist.SmsTranslatesListWidget
 import com.beardness.macosmsapp.ui.compose.widget.toolbar.ToolbarWidget
-import com.beardness.macosmsapp.ui.compose.widget.toolbar.TopAppBarIcon
+import com.beardness.macosmsapp.ui.compose.component.icon.ToolbarIconComponent
 import com.beardness.macosmsapp.usecase.flow.internet.type.InternetStatus
 
 @Composable
@@ -53,11 +53,12 @@ fun SmsByAuthorScreen(
     ) {
         ToolbarWidget(
             title = author,
+            onTitleClick = null,
             navigation = {
                 AvatarComponent(color = avatarColor)
             },
             action = {
-                TopAppBarIcon(
+                ToolbarIconComponent(
                     imageVector = Icons.Rounded.Close,
                     tint = MaterialTheme.colorScheme.onBackground,
                     onClick = {

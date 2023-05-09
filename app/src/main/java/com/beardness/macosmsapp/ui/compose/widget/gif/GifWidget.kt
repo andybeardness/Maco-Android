@@ -5,14 +5,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import coil.ImageLoader
@@ -21,7 +18,7 @@ import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
 import com.beardness.macosmsapp.R
 import com.beardness.macosmsapp.ui.compose.component.spacer.SpacerColumn
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun GifWidget(
@@ -43,28 +40,33 @@ fun GifWidget(
         }
         .build()
 
-    Column(
-        modifier = Modifier
-            .clip(shape = RoundedCornerShape(size = Dimens.dp16))
-            .background(color = Color.White.copy(alpha = .1f))
-            .padding(all = Dimens.dp16),
-        horizontalAlignment = Alignment.CenterHorizontally,
+    Surface(
+        shape = MaterialTheme.shapes.large,
+        shadowElevation = MacoDimens.dp4,
     ) {
-        Image(
-            modifier = modifier,
-            painter = rememberAsyncImagePainter(
-                model = gifResId,
-                imageLoader = imageLoader,
-            ),
-            contentDescription = null,
-        )
+        Column(
+            modifier = Modifier
+                .clip(shape = MaterialTheme.shapes.large)
+                .background(color = MaterialTheme.colorScheme.onBackground.copy(alpha = .1f))
+                .padding(all = MacoDimens.dp16),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+            Image(
+                modifier = modifier,
+                painter = rememberAsyncImagePainter(
+                    model = gifResId,
+                    imageLoader = imageLoader,
+                ),
+                contentDescription = null,
+            )
 
-        SpacerColumn(dp = Dimens.dp8)
+            SpacerColumn(dp = MacoDimens.dp8)
 
-        Text(
-            text = waitingText,
-            style = MaterialTheme.typography.headlineMedium,
-            color = MaterialTheme.colorScheme.onBackground,
-        )
+            Text(
+                text = waitingText,
+                style = MaterialTheme.typography.headlineMedium,
+                color = MaterialTheme.colorScheme.onBackground,
+            )
+        }
     }
 }

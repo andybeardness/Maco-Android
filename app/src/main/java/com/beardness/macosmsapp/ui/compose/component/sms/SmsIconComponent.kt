@@ -6,7 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun SmsIconComponent(
@@ -15,7 +15,7 @@ fun SmsIconComponent(
 ) {
     Icon(
         modifier = modifier
-            .size(size = Dimens.dp24),
+            .size(size = MacoDimens.dp24),
         imageVector = imageVector,
         contentDescription = null,
         tint = MaterialTheme.colorScheme.onSurface.copy(alpha = .1f)

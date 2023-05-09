@@ -7,10 +7,10 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
-import com.beardness.macosmsapp.ui.theme.color.DarkThemeColors
-import com.beardness.macosmsapp.ui.theme.color.LightThemeColors
-import com.beardness.macosmsapp.ui.theme.shape.appShapes
-import com.beardness.macosmsapp.ui.theme.typography.appTypography
+import com.beardness.macosmsapp.ui.theme.material.DarkThemeColors
+import com.beardness.macosmsapp.ui.theme.material.LightThemeColors
+import com.beardness.macosmsapp.ui.theme.material.MacoShapes
+import com.beardness.macosmsapp.ui.theme.material.MacoTypography
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
@@ -31,9 +31,8 @@ fun MacoSMSAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Compos
         color = colorScheme.background,
     )
 
-    val typography = appTypography
-
-    val shapes = appShapes
+    val typography = MacoTypography
+    val shapes = MacoShapes
 
     MaterialTheme(
         colorScheme = colorScheme,

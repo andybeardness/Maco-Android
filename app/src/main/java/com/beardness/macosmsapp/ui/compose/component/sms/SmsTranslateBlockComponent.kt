@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.beardness.macosmsapp.R
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun SmsTranslateBlockComponent(
@@ -32,8 +32,8 @@ fun SmsTranslateBlockComponent(
         Spacer(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = Dimens.dp12)
-                .height(height = Dimens.dp1)
+                .padding(horizontal = MacoDimens.dp12)
+                .height(height = MacoDimens.dp1)
                 .background(color = MaterialTheme.colorScheme.onSurface.copy(alpha = .1f)),
         )
 

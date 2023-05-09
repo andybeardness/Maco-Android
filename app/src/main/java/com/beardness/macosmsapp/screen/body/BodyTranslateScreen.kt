@@ -88,6 +88,7 @@ fun BodyTranslateScreen(
                 haptic()
             },
             title = toolbarTitle,
+            onTitleClick = null,
             actionIcon = backspaceIcon,
             onActionClick = {
                 backspaceAction?.invoke()

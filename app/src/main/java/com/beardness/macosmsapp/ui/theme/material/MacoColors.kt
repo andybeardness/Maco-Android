@@ -1,4 +1,4 @@
-package com.beardness.macosmsapp.ui.theme.color
+package com.beardness.macosmsapp.ui.theme.material
 
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -63,8 +63,6 @@ val md_theme_dark_surface = Color(0xFF181211)
 val md_theme_dark_onSurface = Color(0xFFD0C4C2)
 val md_theme_dark_surfaceVariant = Color(0xFF534341)
 val md_theme_dark_onSurfaceVariant = Color(0xFFD8C2BF)
-
-val a = lightColorScheme()
 
 val LightThemeColors = lightColorScheme(
     primary = md_theme_light_primary,

@@ -8,7 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun Fab(
@@ -21,15 +21,15 @@ fun Fab(
         onClick = action,
         containerColor = MaterialTheme.colorScheme.primary,
         elevation = FloatingActionButtonDefaults.elevation(
-            defaultElevation = Dimens.dp0,
-            pressedElevation = Dimens.dp0,
-            focusedElevation = Dimens.dp0,
-            hoveredElevation = Dimens.dp0,
+            defaultElevation = MacoDimens.dp0,
+            pressedElevation = MacoDimens.dp0,
+            focusedElevation = MacoDimens.dp0,
+            hoveredElevation = MacoDimens.dp0,
         )
     ) {
         Icon(
             modifier = Modifier
-                .size(size = Dimens.dp24),
+                .size(size = MacoDimens.dp24),
             imageVector = icon,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onPrimary,

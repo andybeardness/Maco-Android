@@ -19,7 +19,7 @@ import com.beardness.macosmsapp.R
 import com.beardness.macosmsapp.ui.compose.component.fab.Fab
 import com.beardness.macosmsapp.ui.compose.widget.smsbygrouplist.SmsByGroupListWidget
 import com.beardness.macosmsapp.ui.compose.widget.toolbar.ToolbarWidget
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun SmsGroupScreen(
@@ -63,6 +63,10 @@ fun SmsGroupScreen(
                 navigationIcon = toolbarIcon,
                 onNavigationClick = null,
                 title = toolbarTitle,
+                onTitleClick = {
+                    /* TODO ACTION POLICY */
+                    haptic()
+                },
                 actionIcon = Icons.Rounded.Refresh,
                 onActionClick = {
                     haptic()
@@ -82,7 +86,7 @@ fun SmsGroupScreen(
         Fab(
             modifier = Modifier
                 .align(alignment = Alignment.BottomEnd)
-                .padding(all = Dimens.dp32),
+                .padding(all = MacoDimens.dp32),
             action = {
                 navigateToBodyTranslate()
                 haptic()

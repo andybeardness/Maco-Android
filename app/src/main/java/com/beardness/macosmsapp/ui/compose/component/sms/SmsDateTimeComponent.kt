@@ -9,7 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun SmsDateTimeComponent(
@@ -22,14 +22,14 @@ fun SmsDateTimeComponent(
         modifier = Modifier
             .fillMaxWidth()
             .padding(
-                horizontal = Dimens.dp28,
-                vertical = Dimens.dp4,
+                horizontal = MacoDimens.dp28,
+                vertical = MacoDimens.dp2,
             ),
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Text(
             text = date,
-            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.labelMedium,
             color = textColor,
         )
 
@@ -37,7 +37,7 @@ fun SmsDateTimeComponent(
 
         Text(
             text = time,
-            style = MaterialTheme.typography.bodySmall,
+            style = MaterialTheme.typography.labelMedium,
             color = textColor,
         )
     }

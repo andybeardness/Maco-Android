@@ -11,8 +11,8 @@ import androidx.compose.ui.unit.Dp
 import com.beardness.macosmsapp.ui.compose.component.button.ButtonComponent
 import com.beardness.macosmsapp.ui.compose.component.spacer.SpacerRow
 import com.beardness.macosmsapp.ui.compose.component.textinput.LoadingInputComponent
-import com.beardness.macosmsapp.ui.theme.animation.MacoAnimations
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoAnimations
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun InputWidget(
@@ -38,9 +38,9 @@ fun InputWidget(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = Dimens.dp4, horizontal = Dimens.dp16)
-                .heightIn(min = Dimens.dp64, max = Dp.Infinity),
-            verticalAlignment = Alignment.Top,
+                .padding(vertical = MacoDimens.dp8, horizontal = MacoDimens.dp16)
+                .heightIn(min = MacoDimens.dp64, max = Dp.Infinity),
+            verticalAlignment = Alignment.Bottom,
         ) {
             LoadingInputComponent(
                 modifier = Modifier
@@ -53,7 +53,9 @@ fun InputWidget(
                 onClickIme = onClickAction,
             )
 
-            SpacerRow(dp = Dimens.dp8)
+            SpacerRow(
+                dp = MacoDimens.dp8,
+            )
 
             ButtonComponent(
                 icon = Icons.Rounded.Translate,

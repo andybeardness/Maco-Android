@@ -6,7 +6,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.beardness.macosmsapp.screen.smsauthor.dto.SmsAuthorViewDto
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun SmsComponent(
@@ -18,7 +18,7 @@ fun SmsComponent(
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = Dimens.dp8),
+            .padding(vertical = MacoDimens.dp8),
     ) {
         SmsDateTimeComponent(
             date = sms.date,

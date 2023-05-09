@@ -11,8 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
-import com.beardness.macosmsapp.ui.theme.shape.CustomShapes
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun ButtonComponent(
@@ -21,15 +20,15 @@ fun ButtonComponent(
 ) {
     Box(
         modifier = Modifier
-            .size(size = Dimens.dp56)
-            .clip(shape = CustomShapes.circle)
+            .size(size = MacoDimens.dp56)
+            .clip(shape = MaterialTheme.shapes.extraSmall)
             .clickable(onClick = onClick)
             .background(color = MaterialTheme.colorScheme.primary),
         contentAlignment = Alignment.Center,
     ) {
         Icon(
             modifier = Modifier
-                .size(size = Dimens.dp24),
+                .size(size = MacoDimens.dp24),
             imageVector = icon,
             contentDescription = null,
             tint = MaterialTheme.colorScheme.onPrimary,

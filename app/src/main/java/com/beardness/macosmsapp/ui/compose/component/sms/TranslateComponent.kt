@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.beardness.macosmsapp.ui.compose.component.spacer.SpacerColumn
-import com.beardness.macosmsapp.ui.theme.dimen.Dimens
+import com.beardness.macosmsapp.ui.theme.additional.MacoDimens
 
 @Composable
 fun TranslateComponent(
@@ -25,40 +25,40 @@ fun TranslateComponent(
         modifier = Modifier
             .fillMaxWidth()
             .clickable { onClickText() }
-            .padding(horizontal = Dimens.dp12)
-            .padding(bottom = Dimens.dp8),
+            .padding(horizontal = MacoDimens.dp12)
+            .padding(bottom = MacoDimens.dp8),
     ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth(),
         ) {
-            SpacerColumn(dp = Dimens.dp8)
+            SpacerColumn(dp = MacoDimens.dp8)
 
             Text(
                 modifier = Modifier
                     .fillMaxWidth(),
                 text = title,
-                style = MaterialTheme.typography.bodyMedium,
+                style = MaterialTheme.typography.labelLarge,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = .5f),
             )
 
-            SpacerColumn(dp = Dimens.dp8)
+            SpacerColumn(dp = MacoDimens.dp8)
 
             Text(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(end = Dimens.dp32),
+                    .padding(end = MacoDimens.dp32),
                 text = text,
                 style = MaterialTheme.typography.bodyMedium,
             )
 
-            SpacerColumn(dp = Dimens.dp8)
+            SpacerColumn(dp = MacoDimens.dp8)
         }
 
         SmsIconComponent(
             modifier = Modifier
                 .align(alignment = Alignment.BottomEnd)
-                .padding(vertical = Dimens.dp8),
+                .padding(vertical = MacoDimens.dp8),
             imageVector = Icons.Rounded.CopyAll,
         )
     }
