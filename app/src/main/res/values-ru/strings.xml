@@ -1,11 +1,11 @@
 <resources>
-    <string name="input_text">Введите текст</string>
+    <string name="input_text">Введи текст</string>
     <string name="translate">Перевести 🌍 🇬🇪</string>
     <string name="sms_permission">Нужно разрешение на чтение СМС</string>
     <string name="request">Запросить</string>
     <string name="no_connection">Нет интернета</string>
     <string name="translation_auto">🌍 Авто перевод</string>
     <string name="translation_ge">🇬🇪 Грузинский транслит</string>
-    <string name="body_toolbar_text">Особый текст</string>
-    <string name="waiting">Мистер Мопс ждёт ваш запрос</string>
+    <string name="body_toolbar_text">Твой текст</string>
+    <string name="waiting">Мистер Мопс ждёт твой запрос</string>
 </resources>
