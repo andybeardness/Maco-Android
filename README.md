@@ -27,41 +27,17 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 
 ## Screen record
 
-<details>
-    <summary>Click</summary>
-
-    ### Hello
-</details>
-
+-
 
 ## Screens
 
-<details>
-    <summary>Click</summary>
-
-    ### Hello
-</details>
+|   |   |
+| - | - |
+| ![](/preview/hl.png) | ![](/preview/gl.png) | ![](/preview/glt.png) |
+| ![](/preview/hl.png) | ![](/preview/gl.png) | ![](/preview/glt.png) |
 
 ## Dynamic colors
 
-<details>
-    <summary>Click</summary>
-
-    ### Hello
-</details>
-
 ## Default theme
 
-<details>
-    <summary>Click</summary>
-
-    ### Hello
-</details>
-
 ## Locales : EN & RU
-
-<details>
-    <summary>Click</summary>
-
-    ### Hello
-</details>
