@@ -28,7 +28,7 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 ## Screen record
 
 <details>
-    <summary>⬤ Click</summary>
+    <summary>• Click</summary>
 
     ### Hello
 </details>
@@ -37,7 +37,7 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 ## Screens
 
 <details>
-    <summary>⬤ Click</summary>
+    <summary>• Click</summary>
 
     ### Hello
 </details>
@@ -45,7 +45,7 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 ## Dynamic colors
 
 <details>
-    <summary>⬤ Click</summary>
+    <summary>• Click</summary>
 
     ### Hello
 </details>
@@ -53,7 +53,7 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 ## Default theme
 
 <details>
-    <summary>⬤ Click</summary>
+    <summary>• Click</summary>
 
     ### Hello
 </details>
@@ -61,7 +61,7 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 ## Locales : EN & RU
 
 <details>
-    <summary>⬤ Click</summary>
+    <summary>• Click</summary>
 
     ### Hello
 </details>
