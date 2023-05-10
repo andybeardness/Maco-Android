@@ -64,7 +64,6 @@ fun SmsGroupScreen(
                 onNavigationClick = null,
                 title = toolbarTitle,
                 onTitleClick = {
-                    /* TODO ACTION POLICY */
                     haptic()
                 },
                 actionIcon = Icons.Rounded.Refresh,
@@ -86,7 +85,10 @@ fun SmsGroupScreen(
         Fab(
             modifier = Modifier
                 .align(alignment = Alignment.BottomEnd)
-                .padding(all = MacoDimens.dp32),
+                .padding(
+                    vertical = MacoDimens.dp16,
+                    horizontal = MacoDimens.dp32,
+                ),
             action = {
                 navigateToBodyTranslate()
                 haptic()

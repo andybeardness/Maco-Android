@@ -17,3 +17,5 @@ local.properties
 apikey.properties
 admob.properties
 /resources/
+app/release
+*key.jks
