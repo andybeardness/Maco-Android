@@ -6,8 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.beardness.macosmsapp.ad.compose.AdMobBannerWidget
 import com.beardness.macosmsapp.navigation.AppNavigation
 import com.beardness.macosmsapp.ui.theme.MacoSMSAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,14 +27,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NavigationGraph()
+                    AppScaffold(
+                        content = { AppNavigation() },
+                        bottom = { AdMobBannerWidget() },
+                    )
                 }
             }
         }
-    }
-
-    @Composable
-    private fun NavigationGraph() {
-        AppNavigation()
     }
 }

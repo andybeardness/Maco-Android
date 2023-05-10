@@ -9,6 +9,10 @@ def apikeyPropertiesFile = rootProject.file("apikey.properties")
 def apikeyProperties = new Properties()
 apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 
+def adMobPropertiesFile = rootProject.file("admob.properties")
+def adMobProperties = new Properties()
+adMobProperties.load(new FileInputStream(adMobPropertiesFile))
+
 android {
     namespace 'com.beardness.macosmsapp'
     compileSdk 33
@@ -32,6 +36,7 @@ android {
         }
 
         buildConfigField("String", "GOOGLE_TRANSLATE_API_KEY", apikeyProperties["GOOGLE_TRANSLATE_API_KEY"])
+        buildConfigField("String", "ADMOB_BOTTOM_BANNER_ID", adMobProperties["ADMOB_BOTTOM_BANNER_ID"])
     }
 
     buildTypes {
@@ -116,6 +121,9 @@ dependencies {
     // GIFS
     implementation "io.coil-kt:coil-compose:2.2.2"
     implementation "io.coil-kt:coil-gif:2.2.2"
+
+    // ADMOB
+    implementation 'com.google.android.gms:play-services-ads:22.0.0'
 }
 
 kapt {

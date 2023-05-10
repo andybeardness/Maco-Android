@@ -18,7 +18,7 @@ fun ToolbarTitleClickableComponent(
 ) {
     Text(
         modifier = modifier
-            .clip(shape = MaterialTheme.shapes.large)
+            .clip(shape = MaterialTheme.shapes.extraSmall)
             .clickable(onClick = onClick)
             .padding(horizontal = MacoDimens.dp16, vertical = MacoDimens.dp8),
         text = title,
