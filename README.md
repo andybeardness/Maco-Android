@@ -52,7 +52,7 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 | ![](/preview/dynamic/hlg.png) | ![](/preview/dynamic/mlg.png) | ![](/preview/dynamic/hdg.png) | ![](/preview/dynamic/mdg.png) |
 | ![](/preview/dynamic/hly.png) | ![](/preview/dynamic/mly.png) | ![](/preview/dynamic/hdy.png) | ![](/preview/dynamic/mdy.png) |
 
-## Locales : EN + RU
+## Locales : EN RU
 
 |   |   |
 | - | - |
