@@ -17,6 +17,7 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 - **Material3**
 - **Material Icons**
 - **Compose**
+- **Compose Animations**
 - **Compose Navigation**
 - **Dynamic colors**
 - **Hilt**
@@ -37,10 +38,17 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 
 |   |   |   |   |
 | - | - | - | - |
-| ![](/preview/hl.png) | ![](/preview/gl.png) | ![](/preview/gtl1.png) | ![](/preview/ml.png) |
-| ![](/preview/hd.png) | ![](/preview/gd.png) | ![](/preview/gtd1.png) | ![](/preview/md.png) |
+| ![](/preview/screens/hl.png) | ![](/preview/screens/gl.png) | ![](/preview/screens/gtl1.png) | ![](/preview/screens/ml.png) |
+| ![](/preview/screens/hd.png) | ![](/preview/screens/gd.png) | ![](/preview/screens/gtd1.png) | ![](/preview/screens/md.png) |
 
 ## Dynamic colors
+
+|   |   |   |   |
+| - | - | - | - |
+| ![](/preview/dynamic/hlr.png) | ![](/preview/dynamic/mlr.png) | ![](/preview/dynamic/hdr.png) | ![](/preview/dynamic/hdr.png) |
+| ![](/preview/dynamic/hlb.png) | ![](/preview/dynamic/mlb.png) | ![](/preview/dynamic/hdb.png) | ![](/preview/dynamic/hdb.png) |
+| ![](/preview/dynamic/hlg.png) | ![](/preview/dynamic/mlg.png) | ![](/preview/dynamic/hdg.png) | ![](/preview/dynamic/hdg.png) |
+| ![](/preview/dynamic/hly.png) | ![](/preview/dynamic/mly.png) | ![](/preview/dynamic/hdy.png) | ![](/preview/dynamic/hdy.png) |
 
 ## Default theme
 
