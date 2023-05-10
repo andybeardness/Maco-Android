@@ -10,7 +10,13 @@ Android App : Maco Sms App
 
 The Maco application helps to translate SMS text from Georgian transliteration or just any language into Russian
 
-# Features Dev
+# Features
+
+- **Translate SMS from Georgian transliteration to russian**
+- **Translate SMS from another language to russian**
+- **Translate free input to russian**
+
+# Dev Features
 
 - **Kotlin**
 - **Kotlin Coroutines**
