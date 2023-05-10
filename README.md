@@ -4,7 +4,7 @@
 
 Android App : Maco Sms App
 
-![](/preview/p.png)
+![](/preview/preview/p.png)
 
 # About
 
