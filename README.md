@@ -30,12 +30,6 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 
 # Preview
 
-## Screen record
-
-|   |   |
-| - | - |
-| ![](preview/record/srg.gif) | ![](preview/record/srm.gif) |
-
 ## Screens
 
 |   |   |   |   |
@@ -57,3 +51,9 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 |   |   |
 | - | - |
 | ![](/preview/locale/le.png) | ![](/preview/locale/lr.png) |
+
+## Screen record
+
+|   |   |
+| - | - |
+| ![](preview/record/srg.gif) | ![](preview/record/srm.gif) |
