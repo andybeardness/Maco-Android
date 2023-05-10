@@ -31,10 +31,10 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 
 ## Screens
 
-|   |   |
-| - | - |
-| ![](/preview/hl.png) | ![](/preview/gl.png) | ![](/preview/glt.png) |
-| ![](/preview/hl.png) | ![](/preview/gl.png) | ![](/preview/glt.png) |
+|   |   |   |
+| - | - | - |
+| ![](/preview/hl.png) | ![](/preview/gl.png) | ![](/preview/gtl.png) |
+| ![](/preview/hd.png) | ![](/preview/gd.png) | ![](/preview/gtd.png) |
 
 ## Dynamic colors
 
