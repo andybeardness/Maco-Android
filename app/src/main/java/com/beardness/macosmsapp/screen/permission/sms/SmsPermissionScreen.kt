@@ -48,15 +48,15 @@ fun SmsPermissionScreen(
             Box(
                 modifier = Modifier
                     .clip(shape = MaterialTheme.shapes.extraSmall)
+                    .clickable {
+                        permissionDialog()
+                        haptic()
+                    }
                     .background(color = MaterialTheme.colorScheme.primary)
                     .padding(
                         horizontal = MacoDimens.dp32,
                         vertical = MacoDimens.dp16,
-                    )
-                    .clickable {
-                        permissionDialog()
-                        haptic()
-                    },
+                    ),
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
