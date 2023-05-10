@@ -45,10 +45,10 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 
 |   |   |   |   |
 | - | - | - | - |
-| ![](/preview/dynamic/hlr.png) | ![](/preview/dynamic/mlr.png) | ![](/preview/dynamic/hdr.png) | ![](/preview/dynamic/hdr.png) |
-| ![](/preview/dynamic/hlb.png) | ![](/preview/dynamic/mlb.png) | ![](/preview/dynamic/hdb.png) | ![](/preview/dynamic/hdb.png) |
-| ![](/preview/dynamic/hlg.png) | ![](/preview/dynamic/mlg.png) | ![](/preview/dynamic/hdg.png) | ![](/preview/dynamic/hdg.png) |
-| ![](/preview/dynamic/hly.png) | ![](/preview/dynamic/mly.png) | ![](/preview/dynamic/hdy.png) | ![](/preview/dynamic/hdy.png) |
+| ![](/preview/dynamic/hlr.png) | ![](/preview/dynamic/mlr.png) | ![](/preview/dynamic/hdr.png) | ![](/preview/dynamic/mdr.png) |
+| ![](/preview/dynamic/hlb.png) | ![](/preview/dynamic/mlb.png) | ![](/preview/dynamic/hdb.png) | ![](/preview/dynamic/mdb.png) |
+| ![](/preview/dynamic/hlg.png) | ![](/preview/dynamic/mlg.png) | ![](/preview/dynamic/hdg.png) | ![](/preview/dynamic/mdg.png) |
+| ![](/preview/dynamic/hly.png) | ![](/preview/dynamic/mly.png) | ![](/preview/dynamic/hdy.png) | ![](/preview/dynamic/mdy.png) |
 
 ## Default theme
 
