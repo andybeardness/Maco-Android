@@ -10,20 +10,22 @@ Android App : Maco Sms App
 
 The Maco application helps to translate SMS text from Georgian transliteration or just any language into Russian
 
-# Features
+# Features Dev
 
-- Kotlin
-- Kotlin Coroutines
-- Material3
-- Material Icons
-- Compose
-- Compose Navigation
-- Dynamic colors
-- Hilt
-- Room
-- OkHttp + Retrofit + GSON
-- Gif
-- Ad
+- **Kotlin**
+- **Kotlin Coroutines**
+- **Material3**
+- **Material Icons**
+- **Compose**
+- **Compose Navigation**
+- **Dynamic colors**
+- **Hilt**
+- **Room**
+- **OkHttp**
+- **Retrofit**
+- **GSON**
+- **Gif**
+- **Ad**
 
 # Preview
 
