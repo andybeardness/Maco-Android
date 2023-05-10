@@ -33,8 +33,8 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 
 |   |   |   |
 | - | - | - |
-| ![](/preview/hl.png) | ![](/preview/gl.png) | ![](/preview/gtl.png) |
-| ![](/preview/hd.png) | ![](/preview/gd.png) | ![](/preview/gtd.png) |
+| ![](/preview/hl.png) | ![](/preview/gl.png) | ![](/preview/gtl1.png) |
+| ![](/preview/hd.png) | ![](/preview/gd.png) | ![](/preview/gtd1.png) |
 
 ## Dynamic colors
 
