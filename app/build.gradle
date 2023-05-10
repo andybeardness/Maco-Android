@@ -13,7 +13,18 @@ def adMobPropertiesFile = rootProject.file("admob.properties")
 def adMobProperties = new Properties()
 adMobProperties.load(new FileInputStream(adMobPropertiesFile))
 
+def ADMOB_BOTTOM_BANNER_ID_RELEASE = adMobProperties['ADMOB_BOTTOM_BANNER_ID_RELEASE']
+def ADMOB_BOTTOM_BANNER_ID_DEBUG = adMobProperties['ADMOB_BOTTOM_BANNER_ID_DEBUG']
+
 android {
+    signingConfigs {
+        release {
+            storeFile file('/home/andybeardness/AndroidStudioProjects/MacoSMSApp/macosmsappkey.jks')
+            storePassword '!Andy1812'
+            keyAlias 'andy'
+            keyPassword '!Andy1812'
+        }
+    }
     namespace 'com.beardness.macosmsapp'
     compileSdk 33
 
@@ -36,13 +47,19 @@ android {
         }
 
         buildConfigField("String", "GOOGLE_TRANSLATE_API_KEY", apikeyProperties["GOOGLE_TRANSLATE_API_KEY"])
-        buildConfigField("String", "ADMOB_BOTTOM_BANNER_ID", adMobProperties["ADMOB_BOTTOM_BANNER_ID"])
+        signingConfig signingConfigs.debug
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            buildConfigField("String", "ADMOB_BOTTOM_BANNER_ID", ADMOB_BOTTOM_BANNER_ID_RELEASE)
+        }
+
+        debug {
+            buildConfigField("String", "ADMOB_BOTTOM_BANNER_ID", ADMOB_BOTTOM_BANNER_ID_DEBUG)
         }
     }
     compileOptions {
