@@ -32,7 +32,9 @@ The Maco application helps to translate SMS text from Georgian transliteration o
 
 ## Screen record
 
--
+|   |   |
+| - | - |
+| ![](preview/record/srg.gif) | ![](preview/record/srm.gif) |
 
 ## Screens
 
