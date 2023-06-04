@@ -11,10 +11,6 @@ class AutoTranslator @Inject constructor(
     private val googleTranslateApiService: GoogleTranslateApiService,
 ) : BaseTranslatorProtocol {
 
-    companion object {
-        private const val APIKEY = BuildConfig.GOOGLE_TRANSLATE_API_KEY
-    }
-
     override suspend fun translate(text: String): String? {
         val request = RequestDto.request(
             q = text,
@@ -22,7 +18,7 @@ class AutoTranslator @Inject constructor(
         )
 
         val response = googleTranslateApiService.translate(
-            key = APIKEY,
+            key = BuildConfig.GOOGLE_TRANSLATE_API_KEY,
             request = request,
         )
 
